@@ -1,0 +1,30 @@
+@import '~node_modules/modern-normalize/modern-normalize.css';
+body {
+  font-family: "Poppins";
+  background-color: #0C0B0B;
+}
+
+button {
+  cursor: pointer;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  margin: 0;
+  padding: 0;
+}
+
+ul, li {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  display: block;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}/*# sourceMappingURL=index.css.map */
