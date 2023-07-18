@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="./sass/index.css" />
     <link rel="shortcut icon" href="./images/logo.png" type="image/x-icon">
 
-    <script type="module" src="./index.mjs"></script>
+    <script type="module" src="./index.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
     
   </head>
@@ -33,27 +33,19 @@
           Marvel characters and comics. Start exploring the Marvelous Adventures now by visiting our Characters and Comics
           sections and discover your new favorites today.
         </p>
-        <a class="all-char-btn" href="./partials/characters.html">All Characters</a>
+        <a class="all-char-btn hero-button" href="./partials/characters.html">All Characters</a>
       </div>
       <div class="swiper">
         <div class="swiper-pagination swiper-custom-pagination"></div>
         <div class="swiper-wrapper">
           <div class="swiper-slide">
-            <div class="swiper-effect">
-              <p class="swiper-text">Black Panter</p>
-            </div>
           </div>
           <div class="swiper-slide">
-            <div class="swiper-effect">
-              <p class="swiper-text">Spider Man</p>
-            </div>
           </div>
           <div class="swiper-slide">
-            <div class="swiper-effect">
-              <p class="swiper-text">Hulk</p>
-            </div>
           </div>
         </div>
+        <!-- <a class="all-char-btn hero-button" href="./partials/characters.html">All Characters</a> -->
       </div>
     
     </section>
@@ -74,6 +66,26 @@
         direction: direction,
         slidesPerView: 'auto',
         freeMode: true,
+        on: {
+          slideChange: function () {
+            const activeIndex = this.activeIndex;
+            const heroButton = document.querySelector('.hero-button');
+
+            switch (activeIndex) {
+              case 0:
+                heroButton.style.backgroundColor = '#34387F';
+                break;
+              case 1:
+                heroButton.style.backgroundColor = '#600404';
+                break;
+              case 2:
+                heroButton.style.backgroundColor = '#5B7F3C';
+                break;
+              default:
+                heroButton.style.backgroundColor = '#34387F';
+            }
+          }
+        },
 
         scrollbar: {
           hide: true,

@@ -91,9 +91,9 @@ header {
 
 .swiper {
   position: relative;
-  width: 600px;
+  width: 768px;
   background-color: #fff;
-  height: 300px;
+  height: 600px;
 }
 
 .swiper-slide {
@@ -152,6 +152,7 @@ header {
 .swiper-slide-active {
   color: var(--active-color);
 }
+
 
 .swiper-effect {
   width: 144px;
