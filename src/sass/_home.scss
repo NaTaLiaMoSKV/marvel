@@ -1,58 +1,135 @@
 header {
-    margin: 24px 32px 134px;
+    margin: 20px;
+    margin-bottom: 44px;
 }
 
 .logo__icon {
-    width: 202px;
-    height: 31px;
+    width: 98px;
+    height: 15px;
 }
 
 .hero-section {
-    margin: 0 32px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    margin: 0 20px;
 }
 
 .hero-subtitle {
     color: rgba(255, 255, 255, 0.70);
     font-size: 18px;
-    font-style: normal;
     font-weight: 400;
     line-height: 160%;
     text-transform: uppercase;
 }
 
 .hero-title {
-    margin-top: 16px;
-    width: 538px;
+    margin-top: 14px;
+    width: 300px;
     color: #FAFAFA;
-    font-size: 80px;
+    font-size: 44px;
     font-weight: 500;
-    line-height: 80px;
-    letter-spacing: -1.6px;
+    line-height: 44px;
+    letter-spacing: -0.88px;
 }
 
 .hero-text {
-    margin-top: 18px;
-    margin-bottom: 32px;
+    margin-top: 16px;
+    margin-bottom: 20px;
     color: #FAFAFA;
-    width: 527px;
-    font-size: 16px;
+    width: auto;
+    font-size: 14px;
     font-weight: 400;
     line-height: 18px;
 }
 
 .all-char-btn {
-    padding: 12px 24px;
+    padding: 10px 24px;
     border-radius: 1000px;
     background: #34387F;
     font-family: 'Poppins';
     color: #FAFAFA;
-    font-size: 14px;
+    font-size: 12px;
     font-style: normal;
     font-weight: 500;
-    line-height: 18px;
+    line-height: 16px;
     text-transform: uppercase;
 }
 
+@media screen and (min-width: 480px) {
+    
+    .hero-text {
+        width: 420px;
+    }
+}
+
+@media screen and (min-width: 480px) and (max-width:767px) {
+
+    .hero-section {
+        width: 440px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media screen and (min-width: 768px) {
+
+    header {
+        margin: 24px 32px 80px;
+    }
+    
+    .logo__icon {
+        width: 202px;
+        height: 31px;
+    }
+
+    .hero-section {
+        width: 728px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-title {
+        margin-top: 16px;
+        width: 538px;
+        font-size: 80px;
+        font-weight: 500;
+        line-height: 80px;
+        letter-spacing: -1.6px;
+    }
+
+    .hero-text {
+        margin-top: 18px;
+        margin-bottom: 44px;
+        width: 473px;
+        font-size: 16px;
+    }
+
+    .all-char-btn {
+        padding: 12px 24px;
+        font-size: 14px;
+        line-height: 18px;
+    }
+}
+
+
+
+@media screen and (min-width: 1200px) {
+    
+    .hero {
+        width: 510px;
+        margin-right: 50px;
+    }
+
+    .hero-section {
+        width: calc(100% - 64px);
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+    }
+
+    .hero-text {
+        margin-top: 18px;
+        margin-bottom: 32px;
+        width: 100%;
+        font-size: 16px;
+    }
+
+}
