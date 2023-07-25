@@ -19,28 +19,57 @@ const BASE_URL = 'https://gateway.marvel.com/v1/public/characters';
 const timestamp = new Date().getTime().toString();
 const hash = md5(timestamp + PRIVATE_KEY + PUBLIC_KEY);
 
-function fetchCharacterById(characterId) {
-    return axios.get(`${BASE_URL}/${characterId}?ts=${timestamp}&apikey=${PUBLIC_KEY}&hash=${hash}`)
-        .then((response) => {
-            return response.data.data.results[0];
-        });
+
+getHeroCharacters();
+getRandomCharacters();
+
+function getRandomCharacters() {
+  const randomCharacters = [];
+
+  for (let i = 0; i < 5; i++) {
+    fetchRandomCharacters()
+      .then((character) => {
+        randomCharacters.push(character);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }
+  createRandomSwiperMarkup(randomCharacters);
 }
 
-const heroCharacterIds = [BLACK_PANTHER_ID, SPIDER_MAN_ID, HULK_ID ];
+function getHeroCharacters() {
+  const heroCharacterIds = [BLACK_PANTHER_ID, SPIDER_MAN_ID, HULK_ID];
+  
+  Promise.all(heroCharacterIds.map(fetchCharacterById))
+    .then((heroCharacters) => {
+      createHeroSwiperMarkup(heroCharacters);
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+}
 
-Promise.all(heroCharacterIds.map(fetchCharacterById))
-  .then((heroCharacters) => {
-        console.log(heroCharacters);
-        createHeroSwiperMarkup(heroCharacters);
-  })
-  .catch((error) => {
-    console.error(error);
-  });
+async function fetchRandomCharacters() {
+  const num = Math.floor(Math.random() * 1562) + 1;
+
+  return axios.get(`${BASE_URL}?offset=${num}&ts=${timestamp}&apikey=${PUBLIC_KEY}&hash=${hash}`)
+    .then((response) => {
+        return response.data.data.results[0];
+    });
+}
+
+async function fetchCharacterById(characterId) {
+    return axios.get(`${BASE_URL}/${characterId}?ts=${timestamp}&apikey=${PUBLIC_KEY}&hash=${hash}`)
+      .then((response) => {
+          return response.data.data.results[0];
+      });
+}
 
 
 function createHeroSwiperMarkup(heroCharacters) {
     heroCharacters.forEach((char) => {
-        let swiperSlide;
+        let heroSwiperSlide;
 
         switch (char.name) {
             case 'Black Panther':
@@ -48,21 +77,21 @@ function createHeroSwiperMarkup(heroCharacters) {
                 char.image2 = img12;
                 char.description = 'T’Challa is the king of the secretive and highly advanced African nation of Wakanda - as well as the powerful warrior known as the Black Panther.'
                 
-                swiperSlide = document.querySelector('[aria-label="1 / 3"]');
+                heroSwiperSlide = document.querySelector('[aria-label="1 / 3"]');
                 break;
             case 'Spider-Man (Peter Parker)':
                 char.name = 'Spider Man';
                 char.image1 = img21;
                 char.image2 = img22;
                 char.description = 'With amazing spider-like abilities, teenage science whiz Peter Parker fights crime and dreams of becoming an Avenger as Spider-Man.'
-                swiperSlide = document.querySelector('[aria-label="2 / 3"]');
+                heroSwiperSlide = document.querySelector('[aria-label="2 / 3"]');
                 
                 break;
             case 'Hulk':
                 char.image1 = img31;
                 char.image2 = img32;
                 
-                swiperSlide = document.querySelector('[aria-label="3 / 3"]');
+                heroSwiperSlide = document.querySelector('[aria-label="3 / 3"]');
                 char.description = 'Exposed to heavy doses of gamma radiation, scientist Bruce Banner transforms into the mean, green rage machine called the Hulk.'
                 break;
         }
@@ -84,6 +113,44 @@ function createHeroSwiperMarkup(heroCharacters) {
             </div>
             `;
         
-        swiperSlide.innerHTML = markup;
+        heroSwiperSlide.innerHTML = markup;
     });
+}
+
+function createRandomSwiperMarkup(randomCharacters) {
+  console.log(randomCharacters)
+  for (let i = 0; i < randomCharacters.length; i++) {
+    const char = randomCharacters[i];
+    let randomSwiperSlide;
+    
+    if (char.description.length > 200) {
+      char.description = char.description.substring(0, 200) + '...';
+    }
+    console.log('index: ' + i);
+
+    randomSwiperSlide = document.querySelector(`'[data-index="${i}"]'`);
+      
+    const markup = `
+      <img class="random-swiper-slide__img" src="http://i.annihil.us/u/prod/marvel/i/mg/6/a0/5269553f4bc6a/portrait_xlarge.jpg" alt="${char.name}">
+        `;
+      
+      randomSwiperSlide.innerHTML = markup;
   }
+  // randomCharacters.forEach((char) => {
+  //   console.log(char)
+    // let randomSwiperSlide;
+    // if (char.description.length > 200) {
+    //   char.description = char.description.substring(0, 200) + '...';
+    // }
+    // const index = randomCharacters.indexOf(char);
+    // console.log('index: ' + index);
+
+    // randomSwiperSlide = document.querySelector(`'[data-index="${index}"]'`);
+      
+    // const markup = `
+    //   <img class="random-swiper-slide__img" src="http://i.annihil.us/u/prod/marvel/i/mg/6/a0/5269553f4bc6a/portrait_xlarge.jpg" alt="${char.name}">
+    //     `;
+      
+    //   randomSwiperSlide.innerHTML = markup;
+  // });
+}

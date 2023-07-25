@@ -7,12 +7,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/swiper@10.0.4/swiper-bundle.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./sass/index.css" />
     <link rel="shortcut icon" href="./images/logo.png" type="image/x-icon">
 
     <script type="module" src="./index.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10.0.4/swiper-bundle.min.js"></script>
     
   </head>
   <body>
@@ -35,74 +35,43 @@
         </p>
         <a class="all-char-btn hero-button" href="./partials/characters.html">All Characters</a>
       </div>
-      <div class="swiper">
-        <div class="swiper-pagination swiper-custom-pagination"></div>
-        <div class="swiper-wrapper">
-          <div class="swiper-slide">
+      <div class="hero-swiper swiper">
+        <div class="swiper-pagination hero-swiper-custom-pagination hero-swiper-pagination " style="left:0"></div>
+        <div class="swiper-wrapper hero-swiper-wrapper">
+          <div class="swiper-slide hero-swiper-slide">
           </div>
-          <div class="swiper-slide">
+          <div class="swiper-slide hero-swiper-slide">
           </div>
-          <div class="swiper-slide">
+          <div class="swiper-slide hero-swiper-slide">
           </div>
         </div>
       </div>
-    
     </section>
+    <section class="random-section">
+      <h2 class="random-title">Random Characters</h2>
+      <div class="random-swiper swiper">
+        <div class="swiper-pagination random-swiper-custom-pagination random-swiper-pagination"></div>
+        <div class="swiper-wrapper random-swiper-wrapper">
+          <div class="swiper-slide random-swiper-slide">
+            <!-- <img class="random-swiper-slide__img" src="./images/hero1.1_desktop.png" alt="1"> -->
+          </div>
+          <div class="swiper-slide random-swiper-slide">
+            <!-- <img class="random-swiper-slide__img" src="./images/hero2.1_desktop.png" alt="2"> -->
+          </div>
+          <div class="swiper-slide random-swiper-slide">
+            <!-- <img class="random-swiper-slide__img" src="./images/hero2.2_desktop.png" alt="3"> -->
+          </div>
+          <div class="swiper-slide random-swiper-slide">
+            <!-- <img class="random-swiper-slide__img" src="./images/hero3.1_desktop.png" alt="4"> -->
+          </div>
+          <div class="swiper-slide random-swiper-slide">
+            <!-- <img class="random-swiper-slide__img" src="./images/hero3.2_desktop.png" alt="5"> -->
+          </div>
+        </div>
+      </div>
+      
+    </section>
+
   </body>
-  
-  <script>
-    var swiper = null;
-
-    function initSwiper() {
-      var screenWidth = window.innerWidth || document.documentElement.clientWidth;
-      var direction = screenWidth >= 1200 ? 'vertical' : 'horizontal';
-
-      if (swiper) {
-        swiper.destroy(true, true);
-      }
-
-      swiper = new Swiper('.swiper', {
-        direction: direction,
-        slidesPerView: 'auto',
-        freeMode: true,
-        on: {
-          slideChange: function () {
-            const activeIndex = this.activeIndex;
-            const heroButton = document.querySelector('.hero-button');
-
-            switch (activeIndex) {
-              case 0:
-                heroButton.style.backgroundColor = '#34387F';
-                break;
-              case 1:
-                heroButton.style.backgroundColor = '#600404';
-                break;
-              case 2:
-                heroButton.style.backgroundColor = '#5B7F3C';
-                break;
-              default:
-                heroButton.style.backgroundColor = '#34387F';
-            }
-          }
-        },
-
-        scrollbar: {
-          hide: true,
-        },
-
-        pagination: {
-          el: '.swiper-pagination',
-
-          bulletClass: 'swiper-pagination-bullet',
-          bulletActiveClass: 'swiper-pagination-bullet-active',
-          clickable: true,
-        },
-      });
-    }
-    initSwiper();
-
-    window.addEventListener('resize', function () {
-      initSwiper();
-    });
-  </script>
+  <script type="module" src="./js/swiper.js"></script>
 </html>
