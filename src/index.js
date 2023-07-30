@@ -23,19 +23,19 @@ const hash = md5(timestamp + PRIVATE_KEY + PUBLIC_KEY);
 getHeroCharacters();
 getRandomCharacters();
 
-function getRandomCharacters() {
+async function getRandomCharacters() {
   const randomCharacters = [];
 
   for (let i = 0; i < 5; i++) {
-    fetchRandomCharacters()
+    await fetchRandomCharacters()
       .then((character) => {
         randomCharacters.push(character);
+        createRandomSwiperMarkup(character, i);
       })
       .catch((error) => {
         console.error(error);
       });
   }
-  createRandomSwiperMarkup(randomCharacters);
 }
 
 function getHeroCharacters() {
@@ -117,40 +117,32 @@ function createHeroSwiperMarkup(heroCharacters) {
     });
 }
 
-function createRandomSwiperMarkup(randomCharacters) {
-  console.log(randomCharacters)
-  for (let i = 0; i < randomCharacters.length; i++) {
-    const char = randomCharacters[i];
-    let randomSwiperSlide;
+function createRandomSwiperMarkup(char, index) {
+  const randomSwiperSlide = document.querySelector(`[data-slide="${index}"]`);
+  const randomSwiperText = document.querySelector(`[data-index="${index}"]`);
     
-    if (char.description.length > 200) {
-      char.description = char.description.substring(0, 200) + '...';
-    }
-    console.log('index: ' + i);
-
-    randomSwiperSlide = document.querySelector(`'[data-index="${i}"]'`);
-      
-    const markup = `
-      <img class="random-swiper-slide__img" src="http://i.annihil.us/u/prod/marvel/i/mg/6/a0/5269553f4bc6a/portrait_xlarge.jpg" alt="${char.name}">
-        `;
-      
-      randomSwiperSlide.innerHTML = markup;
+  if (char.description.length > 105) {
+    char.description = char.description.substring(0, 105) + ' ...';
+  } else if (char.description.length === 0) {
+    char.description = 'click to read more about the character';
   }
-  // randomCharacters.forEach((char) => {
-  //   console.log(char)
-    // let randomSwiperSlide;
-    // if (char.description.length > 200) {
-    //   char.description = char.description.substring(0, 200) + '...';
-    // }
-    // const index = randomCharacters.indexOf(char);
-    // console.log('index: ' + index);
 
-    // randomSwiperSlide = document.querySelector(`'[data-index="${index}"]'`);
+ 
+    
+  const slideMarkup = `
+    <img class="random-swiper-slide__img" src="${char.thumbnail.path}/portrait_uncanny.${char.thumbnail.extension}" alt="${char.name}">
+      `;
+  let textMarkup = '';
+  let activeColor = "#34387F";
+    if (index === 0) {
+        textMarkup = `<p class="random-bullet__name" style="color: ${activeColor}">${char.name}</p>
+            <p class="random-bullet__description" style="color: ${activeColor}"> ${char.description}</p>
+          `;
+    }
+    else textMarkup = `<p class="random-bullet__name" style="color: #FAFAFA" >${char.name}</p>
+        <p class="random-bullet__description" style="color: rgba(250, 250, 250, 0.50)">${char.description}</p>
+      `;
       
-    // const markup = `
-    //   <img class="random-swiper-slide__img" src="http://i.annihil.us/u/prod/marvel/i/mg/6/a0/5269553f4bc6a/portrait_xlarge.jpg" alt="${char.name}">
-    //     `;
-      
-    //   randomSwiperSlide.innerHTML = markup;
-  // });
+      randomSwiperSlide.innerHTML = slideMarkup;
+      randomSwiperText.innerHTML = textMarkup;
 }

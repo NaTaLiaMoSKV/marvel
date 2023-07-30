@@ -87,14 +87,9 @@ function initRandomSwiper() {
             renderBullet: function (index, className) {
                 if (index === 0) {
                     return `<div class="${className}" style="opacity:1" data-index="${index}">
-                        <p class="random-bullet__name" style="color: ${activeColor}">Name ${index}</p>
-                        <p class="random-bullet__description" style="color: ${activeColor}">
-                        Hope Van Dyne, daughter of the brilliant and heroic Ant-Man (Hank Pym) and The Wasp (Janet van Dyne), helps trains her father’s successor Scott Lang and secure the destruction of the Yellowjacket technology.</p>
                         </div>`;
                 }
                 return `<div class="${className}" style="opacity:1" data-index="${index}">
-                    <p class="random-bullet__name" style="color: #FAFAFA" >Name ${index}</p>
-                    <p class="random-bullet__description" style="color: rgba(250, 250, 250, 0.50)" >Hope Van Dyne, daughter of the brilliant and heroic Ant-Man (Hank Pym) and The Wasp (Janet van Dyne), helps trains her father’s successor Scott Lang and secure the destruction of the Yellowjacket technology.</p>
                     </div>`;
             },
             bulletClass: 'random-swiper-pagination-bullet swiper-pagination-bullet',

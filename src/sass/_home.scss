@@ -6,6 +6,13 @@ header {
 .logo__icon {
     width: 98px;
     height: 15px;
+
+    transition: transform cubic-bezier(0.075, 0.82, 0.165, 1) 250ms;
+
+    &:hover,
+    &:focus {
+        transform: scale(1.2);
+    }
 }
 
 .hero-section,
@@ -44,7 +51,6 @@ header {
 .all-char-btn {
     padding: 10px 24px;
     border-radius: 1000px;
-    background: #34387F;
     font-family: 'Poppins';
     color: #FAFAFA;
     font-size: 12px;
@@ -52,7 +58,51 @@ header {
     font-weight: 500;
     line-height: 16px;
     text-transform: uppercase;
+
+    transition: color cubic-bezier(0.075, 0.82, 0.165, 1) 250ms, font-size cubic-bezier(0.075, 0.82, 0.165, 1) 250ms;
+
+    &:hover,
+    &:focus {
+        color: #ffffff;
+        font-size: 13px;
+    }
 }
+
+.hero-button {
+    background: #34387F;
+}
+
+.random-button {
+    position: absolute;
+    border-radius: 1000px;
+    border: 1px solid rgba(250, 250, 250, 0.30);
+    z-index: 2000;
+    bottom: 60px;
+    right: 0;
+
+    @media screen and (min-width: 760px) {
+        bottom: 150px;
+    }
+
+    @media screen and (min-width: 1200px) {
+        bottom: 0;
+    }
+}
+
+.copyright-section {
+    background-color: #34387F;
+    width: 100%;
+}
+
+.copyright-section__text {
+    padding: 16px;
+    text-align: center;
+    color: rgba(250, 250, 250, 0.40);
+    font-size: 10px;
+    line-height: 12px;
+    letter-spacing: 0.2px;
+}
+
 
 @media screen and (min-width: 480px) {
     
@@ -60,6 +110,7 @@ header {
         width: 420px;
     }
 }
+
 
 @media screen and (min-width: 480px) and (max-width:767px) {
 
@@ -69,6 +120,7 @@ header {
         margin-right: auto;
     }
 }
+
 
 @media screen and (min-width: 768px) {
 
@@ -112,7 +164,19 @@ header {
         padding: 12px 24px;
         font-size: 14px;
         line-height: 18px;
+
+        &:hover,
+        &:focus {
+            font-size: 15px;
+        }
     }
+
+    .copyright-section__text {
+        padding: 18px;
+        font-size: 14px;
+        line-height: 18px;
+    }
+
 }
 
 
