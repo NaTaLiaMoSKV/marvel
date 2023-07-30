@@ -43,9 +43,11 @@
 }
 
 
+
 @media screen and (min-width: 480px) {
     
-    .characters-hero {
+    .characters-hero,
+    .search-section {
         width: 440px;
         margin-left: auto;
         margin-right: auto;
@@ -61,7 +63,8 @@
         padding: 32px;
     }
 
-    .characters-hero {
+    .characters-hero,
+    .search-section  {
         width: 704px;
     }
 
@@ -78,6 +81,7 @@
         line-height: 128px;
         letter-spacing: -2.56px;
     }
+
 }
 
 
@@ -87,7 +91,8 @@
         background-image: url("../images/characters_desktop.png");
     }
 
-    .characters-hero {
+    .characters-hero,
+    .search-section  {
         width: 1136px;
     }
 
