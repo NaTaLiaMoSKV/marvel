@@ -51,14 +51,12 @@ function initHeroSwiper() {
 
         pagination: {
             el: '.hero-swiper-pagination',
-
             bulletClass: 'hero-swiper-pagination-bullet swiper-pagination-bullet',
             bulletActiveClass: 'hero-swiper-pagination-bullet-active swiper-pagination-bullet-active',
             clickable: true,
         },
     });
 }
-
 
 function initRandomSwiper() {
     if (randomSwiper) {

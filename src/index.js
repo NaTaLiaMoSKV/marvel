@@ -1,23 +1,14 @@
-import axios from 'axios';
-import md5 from 'md5';
-
 import img11 from './images/hero1.1_desktop.png'
 import img12 from './images/hero1.2_desktop.png'
 import img21 from './images/hero2.1_desktop.png'
 import img22 from './images/hero2.2_desktop.png'
 import img31 from './images/hero3.1_desktop.png'
 import img32 from './images/hero3.2_desktop.png'
+import { fetchCharacterById, fetchRandomCharacters } from './js/fetchCharacters'
 
 const HULK_ID = '1009351';
 const SPIDER_MAN_ID = '1009610';
 const BLACK_PANTHER_ID = '1009187';
-
-const PUBLIC_KEY = '3b19de822bbdb85fd464fb1da19ae275'; 
-const PRIVATE_KEY = 'f26e701f59fc8c3169b6ee92603774e03d9615c5';
-const BASE_URL = 'https://gateway.marvel.com/v1/public/characters';
-
-const timestamp = new Date().getTime().toString();
-const hash = md5(timestamp + PRIVATE_KEY + PUBLIC_KEY);
 
 
 getHeroCharacters();
@@ -48,22 +39,6 @@ function getHeroCharacters() {
     .catch((error) => {
       console.error(error);
     });
-}
-
-async function fetchRandomCharacters() {
-  const num = Math.floor(Math.random() * 1562) + 1;
-
-  return axios.get(`${BASE_URL}?offset=${num}&ts=${timestamp}&apikey=${PUBLIC_KEY}&hash=${hash}`)
-    .then((response) => {
-        return response.data.data.results[0];
-    });
-}
-
-async function fetchCharacterById(characterId) {
-    return axios.get(`${BASE_URL}/${characterId}?ts=${timestamp}&apikey=${PUBLIC_KEY}&hash=${hash}`)
-      .then((response) => {
-          return response.data.data.results[0];
-      });
 }
 
 
