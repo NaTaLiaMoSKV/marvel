@@ -82,11 +82,8 @@ async function getCharactersByFilter() {
     const orderBy = dropdownText.textContent.toLowerCase();
     const modifiedSince = orderBy == 'name' ? '' : dateInput.value;
     const res = await fetchCharactersByFilter(comics, nameStartsWith, orderBy, modifiedSince);
-    console.log(res);
     createCardsMarkup(res);
 }
-
-
 
 function createCardsMarkup(characters) {
     const cardList = document.querySelector('.cards');
@@ -115,3 +112,4 @@ function createCardsMarkup(characters) {
     
     
 }
+

@@ -22,6 +22,7 @@ function initHeroSwiper() {
         direction: direction,
         slidesPerView: 'auto',
         freeMode: true,
+        allowTouchMove: false,
         on: {
             slideChange: function () {
                 const activeIndex = this.activeIndex;
@@ -67,6 +68,7 @@ function initRandomSwiper() {
         direction: 'vertical',
         slidesPerView: 'auto',
         freeMode: true,
+        allowTouchMove: false,
         on: {
             slideChange: () => updateRandomBullets()
         },

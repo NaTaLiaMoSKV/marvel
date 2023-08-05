@@ -1151,6 +1151,25 @@ div.dropdown-input {
   gap: 16px;
 }
 
+@media screen and (min-width: 480px) {
+  .modal-window {
+    width: 380px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .modal-window {
+    width: 600px;
+    padding: 64px 32px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .modal-window {
+    width: 1000px;
+  }
+  .modal-card {
+    flex-wrap: nowrap;
+  }
+}
 .modal-images {
   width: 100%;
 }
@@ -1214,7 +1233,8 @@ div.dropdown-input {
 
 .modal-info__comics-img {
   width: 100%;
-  height: auto;
+  height: 263px;
+  border-radius: 8px;
   object-fit: cover;
   margin-bottom: 16px;
 }
@@ -1234,23 +1254,14 @@ div.dropdown-input {
   line-height: 14px;
 }
 
-@media screen and (min-width: 480px) {
-  .modal-window {
-    width: 380px;
-  }
-}
 @media screen and (min-width: 768px) {
-  .modal-window {
-    width: 600px;
-    padding: 64px 32px;
-  }
   .modal-images {
     display: flex;
     gap: 10px;
   }
   .modal-images__main-img {
     width: 343px;
-    height: 445px;
+    max-height: 445px;
   }
   .modal-info__character-info {
     flex-direction: row;
@@ -1268,18 +1279,12 @@ div.dropdown-input {
   }
 }
 @media screen and (min-width: 1200px) {
-  .modal-window {
-    width: 1000px;
-  }
-  .modal-card {
-    flex-wrap: nowrap;
-  }
   .modal-images {
     width: 343px;
   }
   .modal-images__main-img {
     width: 343px;
-    height: 100%;
+    max-height: 445px;
   }
   .modal-info__character {
     margin-bottom: 64px;
@@ -1293,5 +1298,189 @@ div.dropdown-input {
   .modal-info__comics-img {
     width: 165px;
     height: 200px;
+  }
+}
+.comic-info {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background-color: #171717;
+  padding: 16px;
+  border-radius: 8px;
+}
+
+.modal-images__comic-img {
+  width: 100%;
+  height: 387px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.comic-info__main {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+}
+
+.comic-info__main-title {
+  color: #FAFAFA;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: -0.36px;
+}
+
+.comic-info__main-date {
+  margin-top: 4px;
+  color: rgba(250, 250, 250, 0.5);
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.comic-info__main-description {
+  color: #FAFAFA;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.comic-info__list {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.comic-info__criterion {
+  color: rgba(250, 250, 250, 0.5);
+  font-size: 9px;
+  line-height: 12px;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.comic-info__value {
+  color: #FAFAFA;
+  font-size: 12px;
+  line-height: 18px;
+}
+
+.comic-info__title {
+  color: #FAFAFA;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: -0.36px;
+  margin-bottom: 20px;
+}
+
+.creator,
+.comic__character {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.creator__img,
+.comic__character-img {
+  width: 50px;
+  border: 1px solid rgba(250, 250, 250, 0.5333333333);
+  height: 50px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.creator__job {
+  color: rgba(250, 250, 250, 0.5);
+  font-size: 10px;
+  line-height: 12px;
+  margin-bottom: 3px;
+}
+
+.creator__name,
+.comic__character-name {
+  color: #FAFAFA;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.comic__characters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.comic__character {
+  width: 137px;
+}
+
+@media screen and (min-width: 768px) {
+  .comic-info {
+    gap: 32px;
+  }
+  .modal-images__comic-img {
+    width: 332px;
+    height: auto;
+  }
+  .comic-info__main {
+    flex-direction: row;
+    gap: 16px;
+    justify-content: space-between;
+  }
+  .comic-info__main-date,
+  .comic-info__main-description {
+    font-size: 16px;
+    line-height: 18px;
+  }
+  .comic-info__main-date {
+    text-align: right;
+  }
+  .comic-info__criterions {
+    width: 317px;
+  }
+  .comic-info__criterion {
+    font-size: 12px;
+    line-height: 14px;
+    margin-bottom: 5px;
+  }
+  .comic-info__value {
+    font-size: 16px;
+    line-height: 18px;
+  }
+  .comic-info__title {
+    margin-bottom: 32px;
+  }
+  .creator,
+  .comic__character {
+    gap: 16px;
+  }
+  .creator__img,
+  .comic__character-img {
+    width: 60px;
+    height: 60px;
+  }
+  .creator__job {
+    margin-bottom: 8px;
+  }
+  .comic__characters {
+    column-gap: 32px;
+  }
+  .comic__character {
+    width: 166px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .modal-images__comic-img {
+    width: 332px;
+    max-height: 445px;
+  }
+  .comic__character {
+    gap: 8px;
+  }
+  .comic__character-name {
+    font-size: 16px;
+    line-height: 18px;
+  }
+  .comic__character {
+    width: 160px;
   }
 }/*# sourceMappingURL=index.css.map */

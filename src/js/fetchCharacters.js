@@ -16,7 +16,6 @@ export async function fetchRandomCharacters() {
   return axios.get(`${BASE_URL}?offset=${num}&ts=${timestamp}&apikey=${PUBLIC_KEY}&hash=${hash}`)
     .then((response) => {
         return response.data.data.results[0];
-        
     });
 }
 
@@ -27,11 +26,31 @@ export async function fetchCharacterById(characterId) {
       });
 }
 
+export async function fetchComicById(comicId) {
+    return axios.get(`${COMICS_URL}/${comicId}?ts=${timestamp}&apikey=${PUBLIC_KEY}&hash=${hash}`)
+      .then((response) => {
+          return response.data.data.results[0];
+      });
+}
+
 export async function fetchComics(characterId) {
     return axios.get(`${BASE_URL}/${characterId}/comics?ts=${timestamp}&apikey=${PUBLIC_KEY}&hash=${hash}`)
       .then((response) => {
           return response.data.data.results;
-          
+      });
+}
+
+export async function fetchComicCharacters(comicId) {
+    return axios.get(`http://gateway.marvel.com/v1/public/comics/${comicId}/characters?ts=${timestamp}&apikey=${PUBLIC_KEY}&hash=${hash}`)
+      .then((response) => {
+          return response.data.data.results;
+      });
+}
+
+export async function fetchCreator(resourceURI) {
+    return axios.get(`${resourceURI}?ts=${timestamp}&apikey=${PUBLIC_KEY}&hash=${hash}`)
+      .then((response) => {
+          return response.data.data.results[0];   
       });
 }
 
@@ -50,12 +69,11 @@ export async function fetchCharactersByFilter(comics, nameStartsWith, orderBy, m
         params.push(`orderBy=${orderBy}&`)
     }
 
-    // if (modifiedSince !== '') {
-    //     params.push(`modifiedSince=${modifiedSince}&`)
-    // }
+    if (modifiedSince !== '') {
+        params.push(`modifiedSince=${modifiedSince}&`)
+    }
 
     const queryString = params.join('');
-    console.log(queryString);
 
     return axios.get(`${BASE_URL}?${queryString}ts=${timestamp}&apikey=${PUBLIC_KEY}&hash=${hash}`)
         .then((response) => {

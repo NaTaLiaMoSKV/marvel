@@ -74,89 +74,6 @@
     gap: 16px;
 }
 
-.modal-images {
-    width: 100%;
-}
-
-.modal-images__main-img {
-    width: 100%;
-    height: 387px;
-    object-fit: cover;
-    border-radius: 10px;
-}
-
-.modal-info {
-    border-radius: 8px;
-    background: #171717;
-    padding: 32px 16px;
-}
-
-.modal-info__character {
-    margin-bottom: 32px;
-}
-
-.modal-info__character-info {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 16px;
-}
-
-.modal-info__character-name,
-.modal-info__comics-name {
-    color: #FAFAFA;
-    font-size: 18px;
-    font-weight: 500;
-    line-height: 24px;
-    letter-spacing: -0.36px;
-}
-
-.modal-info__character-date {
-    margin-top: 4px;
-    color: rgba(250, 250, 250, 0.50);
-    font-size: 14px;
-    line-height: 18px;
-}
-
-.modal-info__character-description {
-    color: #FAFAFA;
-    font-size: 14px;
-    line-height: 18px;
-}
-
-.modal-info__comics-list {
-    margin-top: 16px;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 32px;
-}
-
-.modal-info__comics-item{
-    width: calc(100% - 20px);
-}
-
-.modal-info__comics-img {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    margin-bottom: 16px;
-}
-
-.modal-info__comics-title {
-    color: #FAFAFA;
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 18px;
-    letter-spacing: -0.28px;
-    margin-bottom: 4px;
-}
-
-.modal-info__comics-author {
-    color: rgba(250, 250, 250, 0.50);
-    font-size: 12px;
-    line-height: 14px;
-}
-
 
 @media screen and (min-width: 480px) {
 
@@ -172,33 +89,6 @@
         width: 600px;
         padding: 64px 32px;
     }
-
-    .modal-images {
-        display: flex;
-        gap: 10px;
-    }
-
-    .modal-images__main-img {
-        width: 343px;
-        height: 445px;
-    }
-
-    .modal-info__character-info {
-        flex-direction: row;
-        justify-content: space-between;
-    }
-
-    .modal-info__comics-list {
-        margin-top: 16px;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 16px;
-    }
-
-    .modal-info__comics-img {
-        width: 155px;
-        height: 200px;
-    }
 }
 
 
@@ -210,30 +100,5 @@
 
     .modal-card {
         flex-wrap: nowrap;
-    }
-
-    .modal-images {
-        width: 343px;
-    }
-
-    .modal-images__main-img {
-        width: 343px;
-        height: 100%;
-    }
-
-    .modal-info__character {
-        margin-bottom: 64px;
-    }
-
-    .modal-info__comics-list {
-        gap: 16px;
-    }
-    .modal-info__comics-item {
-        width: 165px;
-    }
-
-    .modal-info__comics-img {
-        width: 165px;
-        height: 200px;
     }
 }
