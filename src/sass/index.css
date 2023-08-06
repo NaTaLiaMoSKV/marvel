@@ -828,6 +828,7 @@ footer {
 }
 .search-form__text-input:focus {
   border: none;
+  background-color: rgba(52, 56, 127, 0.4666666667);
   outline: none;
 }
 
@@ -888,18 +889,20 @@ div.dropdown-input {
   position: relative;
 }
 
-.search-form__date-input {
+.search-form__input.search-form__date-input.form-control {
   cursor: text;
+  height: 57px;
 }
-.search-form__date-input::-webkit-calendar-picker-indicator {
-  color: #FAFAFA;
-  opacity: 1;
-  display: block;
-  background: url(../images/down.png) no-repeat;
-  background-size: contain;
-  width: 18px;
-  height: 18px;
-  border-width: thin;
+.search-form__input.search-form__date-input.form-control:focus {
+  outline: none;
+}
+
+.date__icon {
+  position: absolute;
+  right: 30px;
+  top: 45px;
+  cursor: pointer;
+  pointer-events: none;
 }
 
 @media screen and (min-width: 375px) {
@@ -960,6 +963,9 @@ div.dropdown-input {
     border: none;
     right: 18px;
     top: 39px;
+  }
+  .search-form__input.search-form__date-input.form-control {
+    height: 62px;
   }
 }
 @media screen and (min-width: 1200px) {

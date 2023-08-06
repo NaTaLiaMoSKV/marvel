@@ -55,7 +55,7 @@
 
     &:focus {
         border: none;
-        // background-color: #34387F;
+        background-color: #34387f77;
         outline: none;
     }
 }
@@ -121,19 +121,20 @@ div.dropdown-input {
     position: relative;
 }
 
-.search-form__date-input {
+.search-form__input.search-form__date-input.form-control {
     cursor: text;
-
-    &::-webkit-calendar-picker-indicator {
-        color: #FAFAFA;
-        opacity: 1;
-        display: block;
-        background: url(../images/down.png) no-repeat;
-        background-size: contain;
-        width: 18px;
-        height: 18px;
-        border-width: thin;
+    height: 57px;
+    &:focus {
+        outline: none;
     }
+}
+
+.date__icon {
+    position: absolute;
+    right: 30px;
+    top: 45px;
+    cursor: pointer;
+    pointer-events: none;
 }
 
 
@@ -213,6 +214,10 @@ div.dropdown-input {
         border: none;
         right: 18px;
         top: 39px;
+    }
+
+    .search-form__input.search-form__date-input.form-control {
+        height: 62px; 
     }
 
 }
