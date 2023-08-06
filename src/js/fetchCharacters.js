@@ -41,7 +41,7 @@ export async function fetchComics(characterId) {
 }
 
 export async function fetchComicCharacters(comicId) {
-    return axios.get(`http://gateway.marvel.com/v1/public/comics/${comicId}/characters?ts=${timestamp}&apikey=${PUBLIC_KEY}&hash=${hash}`)
+    return axios.get(`https://gateway.marvel.com/v1/public/comics/${comicId}/characters?ts=${timestamp}&apikey=${PUBLIC_KEY}&hash=${hash}`)
       .then((response) => {
           return response.data.data.results;
       });
