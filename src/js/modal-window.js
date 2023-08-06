@@ -116,7 +116,6 @@ function addComicsButtonsEventListener() {
     modalComicsOpenButtons.forEach(item => {
         item.addEventListener('click', async (e) => {
             const comicId = e.currentTarget.dataset.id;
-            // console.log(comicId)
             const comic = await fetchComicById(comicId);
             await renderComicModalMarkup(comic);
             
@@ -247,8 +246,8 @@ async function renderComicModalMarkup(comic) {
         comicDate = comic.dates[0].date.substring(0, 4);
     }
 
-    com = comic.prices.find(price => price.type === 'printPrice');
-    price = (com.price * 10).toFixed(2);
+    const com = comic.prices.find(price => price.type === 'printPrice');
+    const price = (com.price * 10).toFixed(2);
 
     const markup = `
         <div class="modal-images">
