@@ -57,6 +57,12 @@
 
 .modal-info__comics-item{
     width: calc(100% - 20px);
+    transition: transform 450ms cubic-bezier(0.075, 0.82, 0.165, 1);
+
+    &:hover,
+    &:focus {
+        transform: scale(1.05);
+    }
 }
 
 .modal-info__comics-img {

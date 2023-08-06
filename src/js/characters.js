@@ -11,7 +11,7 @@ const nameStartsWithInput = document.querySelector('[name="nameStartsWith"]');
 const comicsInput = document.querySelector('[name="comics"]');
 const searchButtons = document.querySelectorAll('.search-form__button');
 
-setCurrentDate();
+// setCurrentDate();
 
 dropdownToggle.addEventListener('click', function (event) {
     event.preventDefault();

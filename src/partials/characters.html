@@ -10,7 +10,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../sass/index.css" />
     <link rel="shortcut icon" href="../images/logo.png" type="image/x-icon">
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script type="module" src="../js/characters.js"></script>
 
 </head>
@@ -71,7 +73,7 @@
                 </div>
                 <div class="search-form__text-filter search-form__date-filter">
                     <label class="search-form__label">Date</label>
-                    <input type="date" class="search-form__input search-form__date-input" name="date" lang="en">
+                    <input type="date" class="search-form__input search-form__date-input" name="date" lang="en" id="datePicker">
                 </div>
                 
             </div>
@@ -173,7 +175,15 @@
     
         </div>
     </div>
-    
+    <script>
+        flatpickr("#datePicker", {
+            defaultDate: 'today',
+            color: '#FAFAFA',
+            altInput: true,
+            altFormat: "F j, Y",
+            maxDate: "today", 
+        });
+    </script>
 </body>
 
 </html>

@@ -51,10 +51,11 @@
 
 .search-form__text-input {
     padding: 16px 60px 16px 24px;
+    cursor: text;
 
     &:focus {
         border: none;
-        background-color: #34387F;
+        // background-color: #34387F;
         outline: none;
     }
 }
@@ -120,15 +121,19 @@ div.dropdown-input {
     position: relative;
 }
 
-.search-form__date-input::-webkit-calendar-picker-indicator {
-    color: #FAFAFA;
-    opacity: 1;
-    display: block;
-    background: url(../images/down.png) no-repeat;
-    background-size: contain;
-    width: 18px;
-    height: 18px;
-    border-width: thin;
+.search-form__date-input {
+    cursor: text;
+
+    &::-webkit-calendar-picker-indicator {
+        color: #FAFAFA;
+        opacity: 1;
+        display: block;
+        background: url(../images/down.png) no-repeat;
+        background-size: contain;
+        width: 18px;
+        height: 18px;
+        border-width: thin;
+    }
 }
 
 
