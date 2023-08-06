@@ -48,7 +48,8 @@ export async function fetchComicCharacters(comicId) {
 }
 
 export async function fetchCreator(resourceURI) {
-    return axios.get(`${resourceURI}?ts=${timestamp}&apikey=${PUBLIC_KEY}&hash=${hash}`)
+    const updatedResourseIRI = resourceURI.replace("http://", "https://");
+    return axios.get(`${updatedResourseIRI}?ts=${timestamp}&apikey=${PUBLIC_KEY}&hash=${hash}`)
       .then((response) => {
           return response.data.data.results[0];   
       });
