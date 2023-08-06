@@ -11,7 +11,6 @@ const nameStartsWithInput = document.querySelector('[name="nameStartsWith"]');
 const comicsInput = document.querySelector('[name="comics"]');
 const searchButtons = document.querySelectorAll('.search-form__button');
 
-// setCurrentDate();
 
 dropdownToggle.addEventListener('click', function (event) {
     event.preventDefault();
@@ -60,18 +59,6 @@ searchButtons.forEach(button => {
     });
 })
 
-function setCurrentDate() {
-    const currentDate = new Date();
-    const year = currentDate.getFullYear();
-    let month = currentDate.getMonth() + 1;
-    let day = currentDate.getDate();
-
-    month = month < 10 ? '0' + month : month;
-    day = day < 10 ? '0' + day : day;
-
-    dateInput.value = `${year}-${month}-${day}`;
-    dateInput.setAttribute('max', `${year}-${month}-${day}`);
-}
 
 async function getCharactersByFilter() {
     if (dropdownText.textContent === 'Name') {

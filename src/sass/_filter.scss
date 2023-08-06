@@ -137,6 +137,16 @@ div.dropdown-input {
     pointer-events: none;
 }
 
+span.flatpickr-day.selected, .flatpickr-day.selected.inRange {
+    background: #bcbdd1;
+    border-color: #bcbdd1;
+    
+    &:hover,
+    &:focus {
+        background: #bcbdd1;
+        border-color: #bcbdd1;
+    }
+}
 
 @media screen and (min-width: 375px) {
 

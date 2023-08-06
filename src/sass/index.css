@@ -905,6 +905,15 @@ div.dropdown-input {
   pointer-events: none;
 }
 
+span.flatpickr-day.selected, .flatpickr-day.selected.inRange {
+  background: #bcbdd1;
+  border-color: #bcbdd1;
+}
+span.flatpickr-day.selected:hover, span.flatpickr-day.selected:focus, .flatpickr-day.selected.inRange:hover, .flatpickr-day.selected.inRange:focus {
+  background: #bcbdd1;
+  border-color: #bcbdd1;
+}
+
 @media screen and (min-width: 375px) {
   .search-form__text-filter {
     width: 345px;
