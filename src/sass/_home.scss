@@ -103,6 +103,26 @@ header {
     letter-spacing: 0.2px;
 }
 
+.gallery {
+    display: flex;
+    align-items: center;
+    column-gap: 40px;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+}
+
+.gallery__item {
+    scroll-snap-align: center;
+    min-width: 75%;
+    padding-bottom: 20px;
+}
+
+.gallery__image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
 
 @media screen and (min-width: 480px) {
     
@@ -123,6 +143,7 @@ header {
 
 
 @media screen and (min-width: 768px) {
+    
 
     header {
         margin: 24px 32px 80px;
@@ -175,6 +196,10 @@ header {
         padding: 18px;
         font-size: 14px;
         line-height: 18px;
+    }
+
+    .gallery {
+        display: none;
     }
 
 }

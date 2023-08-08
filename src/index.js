@@ -96,10 +96,10 @@ function createRandomSwiperMarkup(char, index) {
   const randomSwiperSlide = document.querySelector(`[data-slide="${index}"]`);
   const randomSwiperText = document.querySelector(`[data-index="${index}"]`);
     
-  if (char.description.length > 105) {
-    char.description = char.description.substring(0, 105) + ' ...';
+  if (char.description.length > 125) {
+    char.description = char.description.substring(0, 125) + ' ...';
   } else if (char.description.length === 0) {
-    char.description = 'click to read more about the character';
+    char.description = 'without description';
   }
 
  

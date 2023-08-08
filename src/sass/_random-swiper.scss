@@ -19,6 +19,10 @@
 .random-swiper {
     display: flex;
 
+     @media screen and (max-width: 767px) { 
+        display: none;
+     }
+
     @media screen and (max-width: 1199px) {
         flex-direction: column;
     }

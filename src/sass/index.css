@@ -7,6 +7,10 @@ body {
   padding: 0;
 }
 
+body.modal-open {
+  overflow: hidden;
+}
+
 button {
   cursor: pointer;
 }
@@ -132,6 +136,26 @@ header {
   letter-spacing: 0.2px;
 }
 
+.gallery {
+  display: flex;
+  align-items: center;
+  column-gap: 40px;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+}
+
+.gallery__item {
+  scroll-snap-align: center;
+  min-width: 75%;
+  padding-bottom: 20px;
+}
+
+.gallery__image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
 @media screen and (min-width: 480px) {
   .hero-text {
     width: 420px;
@@ -188,6 +212,9 @@ header {
     padding: 18px;
     font-size: 14px;
     line-height: 18px;
+  }
+  .gallery {
+    display: none;
   }
 }
 @media screen and (min-width: 1200px) {
@@ -465,6 +492,11 @@ header {
 
 .random-swiper {
   display: flex;
+}
+@media screen and (max-width: 767px) {
+  .random-swiper {
+    display: none;
+  }
 }
 @media screen and (max-width: 1199px) {
   .random-swiper {
@@ -889,20 +921,14 @@ div.dropdown-input {
   position: relative;
 }
 
-.search-form__input.search-form__date-input.form-control {
+.search-form__input.search-form__date-input.form-control,
+.search-form__date-input {
   cursor: text;
   height: 57px;
 }
-.search-form__input.search-form__date-input.form-control:focus {
+.search-form__input.search-form__date-input.form-control:focus,
+.search-form__date-input:focus {
   outline: none;
-}
-
-.date__icon {
-  position: absolute;
-  right: 30px;
-  top: 45px;
-  cursor: pointer;
-  pointer-events: none;
 }
 
 span.flatpickr-day.selected, .flatpickr-day.selected.inRange {
@@ -973,7 +999,8 @@ span.flatpickr-day.selected:hover, span.flatpickr-day.selected:focus, .flatpickr
     right: 18px;
     top: 39px;
   }
-  .search-form__input.search-form__date-input.form-control {
+  .search-form__input.search-form__date-input.form-control,
+  .search-form__date-input {
     height: 62px;
   }
 }

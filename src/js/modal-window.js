@@ -1,5 +1,7 @@
 import { fetchCharacterById, fetchComics, fetchComicById, fetchComicCharacters, fetchCreator } from "./fetchCharacters";
 import placeholderImage from '../images/placeholder3.jpg'
+
+const body = document.querySelector('body');
 const modal = document.querySelector('[data-modal]');
 const modalCard = document.querySelector('.modal-card');
 const modalClose = document.querySelector('[data-modal-close]');
@@ -14,12 +16,14 @@ export function addEventListenersForModal() {
 
 function onModalCloseBtnClick() {
     modal.classList.add('is-hidden');
+    body.classList.remove('modal-open');
     renderPlaceholderMarkup();
 } 
 
 function onKeyDown(e) {
     if (e.keyCode == 27 && !modal.classList.contains('is-hidden')) {
         modal.classList.add('is-hidden');
+        body.classList.remove('modal-open');
         renderPlaceholderMarkup();
         window.removeEventListener('keydown', onKeyDown);
     }
@@ -28,6 +32,7 @@ function onKeyDown(e) {
 function onBackdropClick(e) {
     if (e.target.classList.contains('backdrop')) {
         modal.classList.add('is-hidden');
+        body.classList.remove('modal-open');
         renderPlaceholderMarkup();
         document.removeEventListener('click', onBackdropClick);
     }
@@ -95,8 +100,9 @@ function addCharactersButtonsEventListener() {
 
     modalOpenButtons.forEach(item => {
         item.addEventListener('click', async (e) => {
-            
             modal.classList.remove('is-hidden');
+            body.classList.add('modal-open');
+
             const characterId = e.currentTarget.dataset.id;
             const character = await fetchCharacterById(characterId);
             
@@ -119,7 +125,6 @@ function addComicsButtonsEventListener() {
             const comic = await fetchComicById(comicId);
             await renderComicModalMarkup(comic);
             
-
             window.addEventListener('keydown', onKeyDown);
             document.addEventListener('click', onBackdropClick);
             modalClose.addEventListener('click', onModalCloseBtnClick);
@@ -148,7 +153,7 @@ async function renderCharacterModalCard(char) {
 
             comicsMarkup += `
                 <li class="modal-info__comics-item" data-id="${com.id}" data-modal-comics>
-                    <img class="modal-info__comics-img" data-id=${com.id} src="${com.thumbnail.path}/portrait_xlarge.${com.thumbnail.extension}" alt="comics">
+                    <img class="modal-info__comics-img" data-id=${com.id} src="${com.thumbnail.path}/portrait_fantastic.${com.thumbnail.extension}" alt="comics">
                     <h3 class="modal-info__comics-title">${com.title}</h3>
                     <p class="modal-info__comics-author">${com.creators.items[0].name}</p>
                 </li>
@@ -170,7 +175,7 @@ async function renderCharacterModalCard(char) {
 
     const markup = `
         <div class="modal-images">
-            <img class="modal-images__main-img" src="${char.thumbnail.path}/portrait_xlarge.${char.thumbnail.extension}" alt="${char.name}">
+            <img class="modal-images__main-img" src="${char.thumbnail.path}/portrait_uncanny.${char.thumbnail.extension}" alt="${char.name}">
         </div>
         <div class="modal-info">
             <div class="modal-info__character">
@@ -211,7 +216,7 @@ async function renderComicModalMarkup(comic) {
 
             charactersMarkup += `
                <li class="comic__character card" data-id=${char.id}>
-                    <img class="comic__character-img" src="${char.thumbnail.path}/standard_xlarge.${char.thumbnail.extension}" alt="comic character">
+                    <img class="comic__character-img" src="${char.thumbnail.path}/standard_fantastic.${char.thumbnail.extension}" alt="comic character">
                     <p class="comic__character-name">${char.name}</p>
                 </li>
             `;
@@ -229,7 +234,7 @@ async function renderComicModalMarkup(comic) {
         creatorMarkup = `
             <h3 class="comic-info__title">Creator</h3>
             <div class="creator">
-                <img class="creator__img" src="${creator.thumbnail.path}/standard_xlarge.${creator.thumbnail.extension}" alt="creator">
+                <img class="creator__img" src="${creator.thumbnail.path}/standard_fantastic.${creator.thumbnail.extension}" alt="creator">
                 <div class="creator__info">
                     <p class="creator__job">Writer</p>
                     <p class="creator__name">${creator.fullName}</p>
@@ -251,7 +256,7 @@ async function renderComicModalMarkup(comic) {
 
     const markup = `
         <div class="modal-images">
-            <img class="modal-images__comic-img" src="${comic.thumbnail.path}/portrait_xlarge.${comic.thumbnail.extension}" alt="main image">
+            <img class="modal-images__comic-img" src="${comic.thumbnail.path}/portrait_uncanny.${comic.thumbnail.extension}" alt="main image">
         </div>
         <div class="comic-info">
             <div>
@@ -292,7 +297,6 @@ async function renderComicModalMarkup(comic) {
             
         </div>
     `
-
     modalCard.innerHTML = markup;
     addCharactersButtonsEventListener();
 }

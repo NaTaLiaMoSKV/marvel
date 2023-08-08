@@ -121,20 +121,13 @@ div.dropdown-input {
     position: relative;
 }
 
-.search-form__input.search-form__date-input.form-control {
+.search-form__input.search-form__date-input.form-control,
+.search-form__date-input {
     cursor: text;
     height: 57px;
     &:focus {
         outline: none;
     }
-}
-
-.date__icon {
-    position: absolute;
-    right: 30px;
-    top: 45px;
-    cursor: pointer;
-    pointer-events: none;
 }
 
 span.flatpickr-day.selected, .flatpickr-day.selected.inRange {
@@ -226,7 +219,8 @@ span.flatpickr-day.selected, .flatpickr-day.selected.inRange {
         top: 39px;
     }
 
-    .search-form__input.search-form__date-input.form-control {
+    .search-form__input.search-form__date-input.form-control,
+    .search-form__date-input {
         height: 62px; 
     }
 
@@ -244,7 +238,6 @@ span.flatpickr-day.selected, .flatpickr-day.selected.inRange {
 
      .search-form {
         gap: 16px;
-        // margin: 0;
     }
     
 }
