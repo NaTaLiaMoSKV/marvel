@@ -4,7 +4,6 @@ let randomSwiper = null;
 let activeColor = "#34387F";
 
 initHeroSwiper();
-initRandomSwiper();
 
 window.addEventListener('resize', function () {
     initHeroSwiper();
@@ -42,7 +41,6 @@ function initHeroSwiper() {
                         activeColor = '#34387F'
                 }
                 heroButton.style.backgroundColor = activeColor;
-                updateRandomBullets();
             }
         },
 
@@ -57,60 +55,4 @@ function initHeroSwiper() {
             clickable: true,
         },
     });
-}
-
-function initRandomSwiper() {
-    if (randomSwiper) {
-        randomSwiper.destroy(true, true);
-    }
-
-    randomSwiper = new Swiper('.random-swiper', {
-        direction: 'vertical',
-        slidesPerView: 'auto',
-        freeMode: true,
-        allowTouchMove: false,
-        on: {
-            slideChange: () => updateRandomBullets()
-        },
-
-        scrollbar: {
-            hide: true,
-        },
-
-        pagination: {
-            el: '.random-swiper-pagination',
-            loop: true,
-            autoplay: {
-                delay: 3500, 
-            },
-            
-            renderBullet: function (index, className) {
-                if (index === 0) {
-                    return `<div class="${className}" style="opacity:1" data-index="${index}">
-                        </div>`;
-                }
-                return `<div class="${className}" style="opacity:1" data-index="${index}">
-                    </div>`;
-            },
-            bulletClass: 'random-swiper-pagination-bullet swiper-pagination-bullet',
-            bulletActiveClass: 'random-swiper-pagination-bullet-active swiper-pagination-bullet-active',
-            clickable: true,
-        },
-    });
-    
-}
-    
-function updateRandomBullets() {
-    const randomBulletNames = document.querySelectorAll('.random-bullet__name');
-    const randomBulletDescriptions = document.querySelectorAll('.random-bullet__description');
-
-    for (let i = 0; i < 5; i++) {
-        if (randomBulletNames[i].closest('.random-swiper-pagination-bullet-active') !== null) {
-            randomBulletNames[i].style.color = activeColor;
-            randomBulletDescriptions[i].style.color = activeColor;
-        } else {
-            randomBulletNames[i].style.color = '#FAFAFA';
-            randomBulletDescriptions[i].style.color = 'rgba(250, 250, 250, 0.50)';
-        }
-    }
 }
