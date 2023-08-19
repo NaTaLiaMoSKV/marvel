@@ -16,6 +16,24 @@
     overflow-x: scroll;
     scroll-snap-type: x mandatory;
     margin-bottom: 30px;
+    
+}
+
+.gallery::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    background-color: #0C0B0B;
+}
+
+.gallery::-webkit-scrollbar {
+    height: 8px;
+    background-color: #0C0B0B;
+}
+
+.gallery::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+    background-color: #2a2a2a;
 }
 
 .gallery__item {
@@ -30,9 +48,9 @@
 }
 
 .random-button {
-    margin-left: 20px;
     border-radius: 1000px;
-    border: 1px solid rgba(250, 250, 250, 0.30);
+    transition: all cubic-bezier(0.075, 0.82, 0.165, 1) 500ms; 
+    background-color: #34387F;
 }
 
 
@@ -40,6 +58,10 @@
 
     .gallery__item {
         min-width: 75%;
+    }
+
+    .random-button {
+    margin-left: 20px;
     }
 }
 

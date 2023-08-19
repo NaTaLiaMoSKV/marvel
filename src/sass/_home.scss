@@ -11,7 +11,7 @@ header {
 
     &:hover,
     &:focus {
-        transform: scale(1.2);
+        transform: scale(1.1);
     }
 }
 
@@ -69,7 +69,8 @@ header {
 }
 
 .hero-button {
-    background: #34387F;
+    background-color: #34387F;
+    transition: all cubic-bezier(0.075, 0.82, 0.165, 1) 500ms; 
 }
 
 .copyright-section {
@@ -105,11 +106,14 @@ header {
 
 @media screen and (min-width: 480px) and (max-width:767px) {
 
-    .hero-section {
+    .hero-section,
+    .random-section {
         width: 440px;
         margin-left: auto;
         margin-right: auto;
     }
+
+
 }
 
 

@@ -1,7 +1,8 @@
 
 let heroSwiper = null;
-let randomSwiper = null;
-let activeColor = "#34387F";
+let lastSlideChangeTime = 0;  
+let activeColor = '#34387F';
+let activeIndex = 0;
 
 initHeroSwiper();
 
@@ -21,14 +22,19 @@ function initHeroSwiper() {
         direction: direction,
         slidesPerView: 'auto',
         freeMode: true,
+        speed: 1000,
+        autoplay: {
+            enabled: true,
+            delay: 3000,
+        },
         allowTouchMove: false,
         on: {
             slideChange: function () {
-                const activeIndex = this.activeIndex;
+                activeIndex = this.activeIndex;
                 const heroButton = document.querySelector('.hero-button');
-
+                const randomButton = document.querySelector('.random-button');
                 switch (activeIndex) {
-                    case 0:;
+                    case 0:
                         activeColor = '#34387F';
                     break;
                     case 1:
@@ -41,8 +47,11 @@ function initHeroSwiper() {
                         activeColor = '#34387F'
                 }
                 heroButton.style.backgroundColor = activeColor;
+                randomButton.style.backgroundColor = activeColor;
             }
+            
         },
+        
 
         scrollbar: {
             hide: true,
@@ -54,5 +63,5 @@ function initHeroSwiper() {
             bulletActiveClass: 'hero-swiper-pagination-bullet-active swiper-pagination-bullet-active',
             clickable: true,
         },
-    });
+    }); 
 }

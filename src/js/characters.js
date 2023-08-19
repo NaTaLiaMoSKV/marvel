@@ -11,7 +11,6 @@ const nameStartsWithInput = document.querySelector('[name="nameStartsWith"]');
 const comicsInput = document.querySelector('[name="comics"]');
 const searchButtons = document.querySelectorAll('.search-form__button');
 
-
 dropdownToggle.addEventListener('click', function (event) {
     event.preventDefault();
     dropdownList.classList.toggle('show');

@@ -169,7 +169,7 @@ async function renderCharacterModalCard(char) {
     }
     else comicsListMarkup = '<h2 class="modal-info__comics-name">No comics with the character</h2>';
 
-    if (char.description == '') {
+    if (char.description.trim() == '' || !char.description) {
         char.description = `${char.name} is one of the characters in the marvel universe. To read the comics of this character, click on the cover of the comic.`
     }
 
@@ -243,7 +243,7 @@ async function renderComicModalMarkup(comic) {
         creatorName = `${creator.fullName} |`;
     }
 
-    if (comic.description == '') {
+    if (comic.description.trim() == '' || !comic.description) {
         comic.description = `${comic.title} is one of the comics in the marvel universe.`
     }
 
@@ -272,7 +272,7 @@ async function renderComicModalMarkup(comic) {
                 <ul class="comic-info__list">
                     <li class="comic-info__item">
                         <p class="comic-info__criterion">FORMAT</p>
-                        <p class="comic-info__value">${comic.format}</p>
+                        <p class="comic-info__value">Comic</p>
                     </li>
                     <li class="comic-info__item">
                         <p class="comic-info__criterion">year released</p>

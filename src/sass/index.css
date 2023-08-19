@@ -46,7 +46,7 @@ header {
   transition: transform cubic-bezier(0.075, 0.82, 0.165, 1) 250ms;
 }
 .logo__icon:hover, .logo__icon:focus {
-  transform: scale(1.2);
+  transform: scale(1.1);
 }
 
 .hero-section,
@@ -100,7 +100,8 @@ header {
 }
 
 .hero-button {
-  background: #34387F;
+  background-color: #34387F;
+  transition: all cubic-bezier(0.075, 0.82, 0.165, 1) 500ms;
 }
 
 .copyright-section {
@@ -128,7 +129,8 @@ header {
   }
 }
 @media screen and (min-width: 480px) and (max-width: 767px) {
-  .hero-section {
+  .hero-section,
+  .random-section {
     width: 440px;
     margin-left: auto;
     margin-right: auto;
@@ -455,6 +457,23 @@ header {
   margin-bottom: 30px;
 }
 
+.gallery::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  background-color: #0C0B0B;
+}
+
+.gallery::-webkit-scrollbar {
+  height: 8px;
+  background-color: #0C0B0B;
+}
+
+.gallery::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #2a2a2a;
+}
+
 .gallery__item {
   scroll-snap-align: center;
   padding-bottom: 20px;
@@ -467,14 +486,17 @@ header {
 }
 
 .random-button {
-  margin-left: 20px;
   border-radius: 1000px;
-  border: 1px solid rgba(250, 250, 250, 0.3);
+  transition: all cubic-bezier(0.075, 0.82, 0.165, 1) 500ms;
+  background-color: #34387F;
 }
 
 @media screen and (max-width: 480px) {
   .gallery__item {
     min-width: 75%;
+  }
+  .random-button {
+    margin-left: 20px;
   }
 }
 @media screen and (min-width: 768px) {
@@ -530,7 +552,7 @@ footer {
   transition: transform cubic-bezier(0.075, 0.82, 0.165, 1) 250ms;
 }
 .footer__logo:hover, .footer__logo:focus {
-  transform: scale(1.2);
+  transform: scale(1.1);
 }
 
 .footer__description {
@@ -926,6 +948,7 @@ span.flatpickr-day.selected:hover, span.flatpickr-day.selected:focus, .flatpickr
 }
 .card:hover, .card:focus {
   transform: scale(1.05);
+  cursor: pointer;
 }
 
 .card__img {
@@ -1175,6 +1198,7 @@ span.flatpickr-day.selected:hover, span.flatpickr-day.selected:focus, .flatpickr
 }
 .modal-info__comics-item:hover, .modal-info__comics-item:focus {
   transform: scale(1.05);
+  cursor: pointer;
 }
 
 .modal-info__comics-img {
