@@ -1257,6 +1257,9 @@ span.flatpickr-day.selected:hover, span.flatpickr-day.selected:focus, .flatpickr
     display: flex;
     gap: 10px;
   }
+  .modal-info__comics-item {
+    width: 155px;
+  }
   .modal-images__main-img {
     width: 343px;
     max-height: 445px;
