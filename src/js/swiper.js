@@ -33,6 +33,7 @@ function initHeroSwiper() {
                 activeIndex = this.activeIndex;
                 const heroButton = document.querySelector('.hero-button');
                 const randomButton = document.querySelector('.random-button');
+                const copyrightSection = document.querySelector('.copyright-section');
                 switch (activeIndex) {
                     case 0:
                         activeColor = '#34387F';
@@ -48,6 +49,7 @@ function initHeroSwiper() {
                 }
                 heroButton.style.backgroundColor = activeColor;
                 randomButton.style.backgroundColor = activeColor;
+                copyrightSection.style.backgroundColor = activeColor;
             }
             
         },

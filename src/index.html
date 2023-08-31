@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="./sass/index.css" />
     <link rel="shortcut icon" href="./images/logo.png" type="image/x-icon">
 
-    <script type="module" src="./index.js"></script>
+    <!-- <script type="module" src="./index.js"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@10.0.4/swiper-bundle.min.js"></script>
     
   </head>
@@ -91,22 +91,26 @@
     </section>
     <section class="random-section">
       <h2 class="random-title">Random Characters</h2>
-      <div class="gallery">
-        <div class="gallery__item">
-          <img class="gallery__image" src="./images/gallery1.png" alt="character 1">
+      <div class="gallery-container">
+        <div class="gallery">
+          <div class="gallery__item">
+            <img class="gallery__image" src="./images/gallery1.png" alt="character 1">
+          </div>
+          <div class="gallery__item">
+            <img class="gallery__image" src="./images/gallery2.png" alt="character 2">
+          </div>
+          <div class="gallery__item">
+            <img class="gallery__image" src="./images/gallery3.png" alt="character 3">
+          </div>
+          <div class="gallery__item">
+            <img class="gallery__image" src="./images/gallery4.png" alt="character 4">
+          </div>
         </div>
-        <div class="gallery__item">
-          <img class="gallery__image" src="./images/gallery2.png" alt="character 2">
+        
         </div>
-        <div class="gallery__item">
-          <img class="gallery__image" src="./images/gallery3.png" alt="character 3">
-        </div>
-        <div class="gallery__item">
-          <img class="gallery__image" src="./images/gallery4.png" alt="character 4">
-        </div>
+        <a class="all-char-btn random-button" href="./partials/characters.html">All Characters</a>
       </div>
-      <a class="all-char-btn random-button" href="./partials/characters.html">All Characters</a>
-      </div>      
+           
     </section>
     <footer>
       <div class="footer__description">
@@ -136,7 +140,7 @@
       </div>
     </footer>
     <div class="copyright-section">
-      <p class="copyright-section__text">Privacy Policy Public Offering Agreement</p>
+      <p class="copyright-section__text">Created by Natalia Moskvychova</p>
     </div>
 
   </body>

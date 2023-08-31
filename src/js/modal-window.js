@@ -143,10 +143,12 @@ async function renderCharacterModalCard(char) {
         for (let i = 0; i < 3; i++) {
             const com = comics[i];
 
-            if (com.title.length > 18) {
-                com.title = com.title.substring(0, 20) + ' ...';
+            if (window.innerWidth > 768) {
+                if (com.title.length > 17) {
+                    com.title = com.title.substring(0, 16) + ' ...';
+                }
             }
-
+            
             if (!com.creators.items[0]) {
                 com.creators.items[0] = { name: 'Without author' };
             }
@@ -211,7 +213,7 @@ async function renderComicModalMarkup(comic) {
             const char = characters[i];
 
             if (char.name.length > 20) {
-                char.name = char.name.substring(0, 18) + ' ...';
+                char.name = char.name.substring(0, 20) + ' ...';
             }
 
             charactersMarkup += `

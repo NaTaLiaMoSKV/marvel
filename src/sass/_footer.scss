@@ -48,12 +48,14 @@ footer {
     }
 }
 
+
 @media screen and (min-width: 480px) {
 
     footer {
         width: 440px;
     }
 }
+
 
 @media screen and (min-width: 768px) {
 
@@ -87,5 +89,13 @@ footer {
         width: 40px;
         height: 40px;
         padding: 10px;
+    }
+}
+
+
+@media screen and (min-width: 1200px) {
+
+    footer {
+        width: 1136px;
     }
 }
