@@ -8,16 +8,15 @@ const dropdownItems = document.querySelectorAll('.dropdown-item');
 
 const dateInput = document.querySelector('[name="date"]');
 const nameStartsWithInput = document.querySelector('[name="nameStartsWith"]');
-const comicsInput = document.querySelector('[name="comics"]');
 const searchButtons = document.querySelectorAll('.search-form__button');
 
 dropdownToggle.addEventListener('click', function (event) {
     event.preventDefault();
     dropdownList.classList.toggle('show');
     dropdownItems.forEach(item => {
-        if (item.textContent == dropdownText.textContent) {
+         if (item.textContent == dropdownText.textContent) {
             item.classList.add('active')
-        }
+        }       
     })
 });
 
@@ -29,25 +28,18 @@ document.addEventListener('click', function (event) {
     }
 });
 
-
 dropdownList.addEventListener('click', function (event) {
-
     if (event.target !== dropdownList && dropdownText.textContent !== event.target.textContent) {
         dropdownText.textContent = event.target.textContent;
         dropdownList.classList.remove('show');
         dropdownItems.forEach(item => {
-            item.classList.remove('active')
+            item.classList.remove('active');
         })
         getCharactersByFilter();
     }
-    
 });
 
 dateInput.addEventListener('change', function(event) {
-    getCharactersByFilter();
-});
-
-dropdownText.addEventListener('input', function (event) {
     getCharactersByFilter();
 });
 
@@ -58,16 +50,11 @@ searchButtons.forEach(button => {
     });
 })
 
-
 async function getCharactersByFilter() {
-    if (dropdownText.textContent === 'Name') {
-        
-    }
-    const comics = comicsInput.value;
     const nameStartsWith = nameStartsWithInput.value;
     const orderBy = dropdownText.textContent.toLowerCase();
     const modifiedSince = orderBy == 'name' ? '' : dateInput.value;
-    const res = await fetchCharactersByFilter(comics, nameStartsWith, orderBy, modifiedSince);
+    const res = await fetchCharactersByFilter(nameStartsWith, orderBy, modifiedSince);
     createCardsMarkup(res);
 }
 

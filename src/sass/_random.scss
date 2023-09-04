@@ -5,7 +5,6 @@
     font-style: normal;
     font-weight: 500;
     line-height: 32px;
-    letter-spacing: -0.56px;
     text-transform: uppercase;
 }
 
@@ -69,8 +68,7 @@
 
     .random-title {
         font-size: 44px;
-        line-height: 44px; 
-        letter-spacing: -0.88px;
+        line-height: 44px;
     }
     
     .random-section {
@@ -101,18 +99,13 @@
 @media screen and (min-width: 1200px) {
     
     .random-section {
-        width: 1136px;
+        width: 90%;
+        max-width: 1600px;
         margin: 0 auto;
     }
 
-    .hero-text {
-        margin-top: 18px;
-        margin-bottom: 32px;
-        width: 100%;
-        font-size: 16px;
-    }
-
     .gallery {
+        width: 100%;
         column-gap: 70px;
     }
 
@@ -127,12 +120,44 @@
     
     @keyframes scrollAnimation {
         0% {
-            transform: translateX(0);
+            transform: translateX(0%);
         }
         100% {
-            transform: translateX(calc(-100% + 1150px));
+            transform: translateX(-55%);
         }
     }
+}
 
 
+@media screen and (min-width: 1300px) {
+
+    .gallery {
+        width: 100%;
+        column-gap: 30px;
+        animation: none;
+    }
+
+    .gallery__image {
+        width: auto;
+        margin: 0;
+        width: calc(100% - 90px / 4);
+
+    }
+}
+
+
+@media screen and (min-width: 1920px) {
+
+    .gallery {
+        column-gap: 50px;
+        animation: none;
+    }
+
+    .gallery__image {
+        width: 360px;
+    }
+
+    .random-title {
+        margin-top: 70px;
+    }
 }

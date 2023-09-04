@@ -30,28 +30,31 @@ function initHeroSwiper() {
         allowTouchMove: false,
         on: {
             slideChange: function () {
-                activeIndex = this.activeIndex;
-                const heroButton = document.querySelector('.hero-button');
-                const randomButton = document.querySelector('.random-button');
-                const copyrightSection = document.querySelector('.copyright-section');
-                switch (activeIndex) {
-                    case 0:
-                        activeColor = '#34387F';
-                    break;
-                    case 1:
-                        activeColor = '#600404'
-                    break;
-                    case 2:
-                        activeColor = '#5B7F3C'
-                    break;
-                    default:
-                        activeColor = '#34387F'
+                const screenWidth = window.innerWidth || document.documentElement.clientWidth;
+
+                if (screenWidth > 768) {
+                    activeIndex = this.activeIndex;
+                    const heroButton = document.querySelector('.hero-button');
+                    const randomButton = document.querySelector('.random-button');
+                    const copyrightSection = document.querySelector('.copyright-section');
+                    switch (activeIndex) {
+                        case 0:
+                            activeColor = '#34387F';
+                        break;
+                        case 1:
+                            activeColor = '#600404'
+                        break;
+                        case 2:
+                            activeColor = '#5B7F3C'
+                        break;
+                        default:
+                            activeColor = '#34387F'
+                    }
+                    heroButton.style.backgroundColor = activeColor;
+                    randomButton.style.backgroundColor = activeColor;
+                    copyrightSection.style.backgroundColor = activeColor;
                 }
-                heroButton.style.backgroundColor = activeColor;
-                randomButton.style.backgroundColor = activeColor;
-                copyrightSection.style.backgroundColor = activeColor;
             }
-            
         },
         
 

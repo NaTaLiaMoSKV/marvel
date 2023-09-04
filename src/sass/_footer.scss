@@ -96,6 +96,33 @@ footer {
 @media screen and (min-width: 1200px) {
 
     footer {
-        width: 1136px;
+        margin-top: 80px;
+        width: 80%;
+        max-width: 1500px;
+    }
+
+    .footer__text {
+        font-size: 20px;
+    }
+}
+
+
+@media screen and (min-width: 1920px) {
+
+    .footer__logo {
+        width: auto;
+        height: 40px;
+    }
+
+    .footer__icons {
+        gap: 25px;
+    }
+
+    .footer__icon {
+        width: 55px;
+        height: 55px;
+        padding: 10px;
+        border-radius: 10px;
+        border: 2px solid rgba(250, 250, 250, 0.15);
     }
 }

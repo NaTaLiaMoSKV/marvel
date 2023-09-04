@@ -132,7 +132,6 @@ function addComicsButtonsEventListener() {
     });
 }
 
-
 async function renderCharacterModalCard(char) {
     let comicsListMarkup = '';
     const comics = await fetchComics(char.id);
@@ -152,7 +151,6 @@ async function renderCharacterModalCard(char) {
             if (!com.creators.items[0]) {
                 com.creators.items[0] = { name: 'Without author' };
             }
-
             comicsMarkup += `
                 <li class="modal-info__comics-item" data-id="${com.id}" data-modal-comics>
                     <img class="modal-info__comics-img" data-id=${com.id} src="${com.thumbnail.path}/portrait_fantastic.${com.thumbnail.extension}" alt="comics">
@@ -245,7 +243,7 @@ async function renderComicModalMarkup(comic) {
         creatorName = `${creator.fullName} |`;
     }
 
-    if (comic.description.trim() == '' || !comic.description) {
+    if ((comic.description !== null && comic.description.trim() == '') || !comic.description) {
         comic.description = `${comic.title} is one of the comics in the marvel universe.`
     }
 
@@ -298,7 +296,7 @@ async function renderComicModalMarkup(comic) {
             </div>
             
         </div>
-    `
+    `;
     modalCard.innerHTML = markup;
     addCharactersButtonsEventListener();
 }

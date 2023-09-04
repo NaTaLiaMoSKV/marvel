@@ -35,7 +35,7 @@
     font-size: 18px;
     font-weight: 500;
     line-height: 24px;
-    letter-spacing: -0.36px;
+    letter-spacing: 0.02em;
 }
 
 .card-notification {
@@ -64,7 +64,6 @@
     font-size: 18px;
     font-weight: 500;
     line-height: 24px;
-    letter-spacing: -0.36px;
 }
 
 .card__empty-container {
@@ -85,7 +84,6 @@
     .card__name {
         margin-top: 14px;
         font-size: 24px;
-        letter-spacing: -0.48px;
     }
 
     .card-notification {
@@ -94,16 +92,15 @@
     }
 
     .card-notification__svg {
-        width: 363px;
-        height: 197px;
+        width: 544px;
+        height: 295px;
         stroke-width: 4px;
     }
 
     .card-notification__text {
-        width: 192px;
-        font-size: 24px;
-        line-height: 28px;
-        letter-spacing: -0.48px;
+        width: 250px;
+        font-size: 26px;
+        line-height: 1.2;
     }
 
 
@@ -112,7 +109,8 @@
 @media screen and (min-width: 1200px) {
     
     .card-section {
-        width: 1136px;
+        min-width: calc(100% - 64px);
+        width: 80%;
     }
 
     .cards {
@@ -127,6 +125,21 @@
     .card__img {
         width: 100%;
         object-fit: cover;
+    }
+
+}
+
+
+@media screen and (min-width: 1920px) {
+    
+    .card-section {
+        width: 1856px;
+    }
+
+    .card__name {
+        margin-top: 25px;
+        font-size: 26px;
+        line-height: 1.1;
     }
 
 }

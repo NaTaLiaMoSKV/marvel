@@ -95,6 +95,7 @@ div.dropdown-input {
     padding: 14px 24px;
     border-radius: 16px;
     background: #171717;
+    z-index: 15;
 
     &.show {
         display: block;
@@ -141,6 +142,7 @@ span.flatpickr-day.selected, .flatpickr-day.selected.inRange {
     }
 }
 
+
 @media screen and (min-width: 375px) {
 
     .search-form__text-filter {
@@ -183,7 +185,7 @@ span.flatpickr-day.selected, .flatpickr-day.selected.inRange {
     }
 
     .search-form__text-filter {
-        width: 170px;
+        width: 200px;
     }
 
     .search-form__label {
@@ -208,7 +210,7 @@ span.flatpickr-day.selected, .flatpickr-day.selected.inRange {
     }
 
     .search-form {
-        gap: 8px;
+        gap: 10px;
     }
     
     .search-form__button {
@@ -236,8 +238,9 @@ span.flatpickr-day.selected, .flatpickr-day.selected.inRange {
         width: 260px;
     }
 
-     .search-form {
-        gap: 16px;
+     .search-form,
+     .search-form__filters {
+        gap: 20px;
     }
     
 }

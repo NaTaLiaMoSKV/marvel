@@ -84,7 +84,6 @@ header {
   font-size: 44px;
   font-weight: 500;
   line-height: 44px;
-  letter-spacing: -0.88px;
 }
 
 .hero-text {
@@ -131,7 +130,7 @@ header {
   color: rgba(250, 250, 250, 0.4);
   font-size: 10px;
   line-height: 12px;
-  letter-spacing: 0.2px;
+  letter-spacing: 0.02em;
 }
 
 @media screen and (min-width: 480px) {
@@ -145,6 +144,7 @@ header {
   }
 }
 @media screen and (min-width: 480px) and (max-width: 767px) {
+  header,
   .hero-section,
   .random-section {
     width: 440px;
@@ -160,6 +160,7 @@ header {
     width: 202px;
     height: 31px;
   }
+  .header,
   .hero-section,
   .random-section {
     width: 728px;
@@ -172,7 +173,6 @@ header {
     font-size: 80px;
     font-weight: 500;
     line-height: 80px;
-    letter-spacing: -1.6px;
   }
   .hero-text {
     margin-top: 18px;
@@ -196,15 +196,32 @@ header {
 }
 @media screen and (min-width: 1200px) {
   .hero {
-    width: 510px;
-    margin-right: 50px;
+    width: 500px;
   }
   .hero-section {
-    width: calc(100% - 64px);
+    position: relative;
+    width: 1136px;
     margin: 0 auto;
     display: flex;
     align-items: center;
     padding-bottom: 80px;
+  }
+  .header,
+  .random-section {
+    width: 1136px;
+  }
+}
+@media screen and (min-width: 1300px) {
+  .hero {
+    width: calc(100% - 690px);
+    max-width: 700px;
+    font-size: larger;
+    margin-right: 50px;
+  }
+  .header,
+  .hero-section {
+    width: 90%;
+    max-width: 1600px;
   }
   .random-section {
     width: calc(100% - 64px);
@@ -212,9 +229,47 @@ header {
   }
   .hero-text {
     margin-top: 18px;
-    margin-bottom: 32px;
+    margin-bottom: 40px;
     width: 100%;
     font-size: 16px;
+  }
+  .all-char-btn {
+    padding: 15px 30px;
+    font-size: 16px;
+    letter-spacing: 0.03em;
+  }
+  .all-char-btn:hover, .all-char-btn:focus {
+    font-size: 20px;
+  }
+}
+@media screen and (min-width: 1920px) {
+  .hero-title {
+    font-size: 100px;
+    line-height: 1.1;
+  }
+  .hero-subtitle {
+    font-size: 22px;
+  }
+  .hero-text {
+    margin-top: 25px;
+    margin-bottom: 50px;
+    font-size: 18px;
+    line-height: 1.1;
+  }
+  .all-char-btn {
+    font-size: 20px;
+  }
+  .all-char-btn:hover, .all-char-btn:focus {
+    font-size: 22px;
+  }
+  .logo__icon {
+    margin-left: -20px;
+    width: auto;
+    height: 40px;
+  }
+  .copyright-section__text {
+    font-size: 20px;
+    padding: 35px;
   }
 }
 .hero-swiper {
@@ -306,7 +361,6 @@ header {
   font-style: normal;
   font-weight: 500;
   line-height: 14px;
-  letter-spacing: -0.24px;
   text-transform: uppercase;
 }
 
@@ -334,7 +388,6 @@ header {
   font-size: 12px;
   font-weight: 400;
   line-height: 14px;
-  letter-spacing: -0.24px;
 }
 
 .hero-swiper__description-text {
@@ -343,7 +396,8 @@ header {
   font-size: 12px;
   font-weight: 400;
   line-height: 14px;
-  letter-spacing: -0.24px;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
 }
 
 @media screen and (min-width: 480px) and (max-width: 767px) {
@@ -394,7 +448,7 @@ header {
   .hero-swiper__text {
     font-size: 22px;
     line-height: 24px;
-    letter-spacing: -0.48px;
+    letter-spacing: 0.03em;
   }
   .hero-swiper__description-container {
     gap: 55px;
@@ -407,12 +461,11 @@ header {
 }
 @media screen and (min-width: 1200px) {
   .hero-swiper {
-    width: 640px;
+    width: auto;
     margin-top: 0;
     position: absolute;
     right: 0;
-    top: 0;
-    height: 570px;
+    height: 580px;
   }
   .hero-swiper__first-container {
     margin-bottom: 0;
@@ -446,7 +499,30 @@ header {
   }
   .hero-swiper-pagination-bullet {
     width: 4px;
+    margin-right: 10px;
     height: 100px;
+  }
+}
+@media screen and (min-width: 1300px) {
+  .hero-swiper {
+    height: 630px;
+  }
+  .hero-swiper__img1,
+  .hero-swiper__img2 {
+    width: 320px;
+  }
+}
+@media screen and (min-width: 1920px) {
+  .hero-swiper {
+    height: 730px;
+  }
+  .hero-swiper__img1,
+  .hero-swiper__img2 {
+    width: 370px;
+  }
+  .hero-swiper-pagination-bullet {
+    width: 7px;
+    height: 150px;
   }
 }
 .random-title {
@@ -456,7 +532,6 @@ header {
   font-style: normal;
   font-weight: 500;
   line-height: 32px;
-  letter-spacing: -0.56px;
   text-transform: uppercase;
 }
 
@@ -513,7 +588,6 @@ header {
   .random-title {
     font-size: 44px;
     line-height: 44px;
-    letter-spacing: -0.88px;
   }
   .random-section {
     width: 728px;
@@ -537,16 +611,12 @@ header {
 }
 @media screen and (min-width: 1200px) {
   .random-section {
-    width: 1136px;
+    width: 90%;
+    max-width: 1600px;
     margin: 0 auto;
   }
-  .hero-text {
-    margin-top: 18px;
-    margin-bottom: 32px;
-    width: 100%;
-    font-size: 16px;
-  }
   .gallery {
+    width: 100%;
     column-gap: 70px;
   }
   .gallery__image {
@@ -557,11 +627,35 @@ header {
   }
   @keyframes scrollAnimation {
     0% {
-      transform: translateX(0);
+      transform: translateX(0%);
     }
     100% {
-      transform: translateX(calc(-100% + 1150px));
+      transform: translateX(-55%);
     }
+  }
+}
+@media screen and (min-width: 1300px) {
+  .gallery {
+    width: 100%;
+    column-gap: 30px;
+    animation: none;
+  }
+  .gallery__image {
+    width: auto;
+    margin: 0;
+    width: calc(100% - 22.5px);
+  }
+}
+@media screen and (min-width: 1920px) {
+  .gallery {
+    column-gap: 50px;
+    animation: none;
+  }
+  .gallery__image {
+    width: 360px;
+  }
+  .random-title {
+    margin-top: 70px;
   }
 }
 footer {
@@ -644,7 +738,28 @@ footer {
 }
 @media screen and (min-width: 1200px) {
   footer {
-    width: 1136px;
+    margin-top: 80px;
+    width: 80%;
+    max-width: 1500px;
+  }
+  .footer__text {
+    font-size: 20px;
+  }
+}
+@media screen and (min-width: 1920px) {
+  .footer__logo {
+    width: auto;
+    height: 40px;
+  }
+  .footer__icons {
+    gap: 25px;
+  }
+  .footer__icon {
+    width: 55px;
+    height: 55px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid rgba(250, 250, 250, 0.15);
   }
 }
 .characters-header {
@@ -671,7 +786,6 @@ footer {
   text-align: center;
   font-size: 50px;
   line-height: 60px;
-  letter-spacing: -1.2px;
 }
 
 .characters-hero__text {
@@ -680,7 +794,6 @@ footer {
   max-width: 469px;
   font-size: 16px;
   line-height: 20px;
-  letter-spacing: 0.32px;
 }
 
 .characters-hero__button {
@@ -719,7 +832,6 @@ footer {
     font-size: 128px;
     font-weight: 500;
     line-height: 128px;
-    letter-spacing: -2.56px;
   }
 }
 @media screen and (min-width: 1200px) {
@@ -728,22 +840,32 @@ footer {
   }
   .characters-hero,
   .search-section {
-    width: 1136px;
+    width: 80%;
+    max-width: 1500px;
   }
   .characters-hero__title {
     text-align: left;
     margin-top: 16px;
     font-size: 150px;
     line-height: 150px;
-    letter-spacing: -3px;
   }
   .characters-hero__text {
+    max-width: 700px;
     margin-bottom: 200px;
-    margin-left: 88px;
+    margin-left: 0;
   }
   .characters-hero__button {
     bottom: 32px;
     right: 32px;
+  }
+}
+@media screen and (min-width: 1920px) {
+  .characters-hero__subtitle {
+    font-size: 22px;
+  }
+  .characters-hero__text {
+    font-size: 18px;
+    line-height: 1.1;
   }
 }
 .search-section {
@@ -841,6 +963,7 @@ div.dropdown-input {
   padding: 14px 24px;
   border-radius: 16px;
   background: #171717;
+  z-index: 15;
 }
 .dropdown-list.show {
   display: block;
@@ -912,7 +1035,7 @@ span.flatpickr-day.selected:hover, span.flatpickr-day.selected:focus, .flatpickr
     width: 704px;
   }
   .search-form__text-filter {
-    width: 170px;
+    width: 200px;
   }
   .search-form__label {
     font-size: 14px;
@@ -932,7 +1055,7 @@ span.flatpickr-day.selected:hover, span.flatpickr-day.selected:focus, .flatpickr
     line-height: 18px;
   }
   .search-form {
-    gap: 8px;
+    gap: 10px;
   }
   .search-form__button {
     position: absolute;
@@ -953,8 +1076,9 @@ span.flatpickr-day.selected:hover, span.flatpickr-day.selected:focus, .flatpickr
   .search-form__text-filter {
     width: 260px;
   }
-  .search-form {
-    gap: 16px;
+  .search-form,
+  .search-form__filters {
+    gap: 20px;
   }
 }
 .card-section {
@@ -992,7 +1116,7 @@ span.flatpickr-day.selected:hover, span.flatpickr-day.selected:focus, .flatpickr
   font-size: 18px;
   font-weight: 500;
   line-height: 24px;
-  letter-spacing: -0.36px;
+  letter-spacing: 0.02em;
 }
 
 .card-notification {
@@ -1021,7 +1145,6 @@ span.flatpickr-day.selected:hover, span.flatpickr-day.selected:focus, .flatpickr
   font-size: 18px;
   font-weight: 500;
   line-height: 24px;
-  letter-spacing: -0.36px;
 }
 
 .card__empty-container {
@@ -1039,27 +1162,26 @@ span.flatpickr-day.selected:hover, span.flatpickr-day.selected:focus, .flatpickr
   .card__name {
     margin-top: 14px;
     font-size: 24px;
-    letter-spacing: -0.48px;
   }
   .card-notification {
     margin: 100px auto 195px;
     height: 220px;
   }
   .card-notification__svg {
-    width: 363px;
-    height: 197px;
+    width: 544px;
+    height: 295px;
     stroke-width: 4px;
   }
   .card-notification__text {
-    width: 192px;
-    font-size: 24px;
-    line-height: 28px;
-    letter-spacing: -0.48px;
+    width: 250px;
+    font-size: 26px;
+    line-height: 1.2;
   }
 }
 @media screen and (min-width: 1200px) {
   .card-section {
-    width: 1136px;
+    min-width: calc(100% - 64px);
+    width: 80%;
   }
   .cards {
     gap: 27px;
@@ -1071,6 +1193,16 @@ span.flatpickr-day.selected:hover, span.flatpickr-day.selected:focus, .flatpickr
   .card__img {
     width: 100%;
     object-fit: cover;
+  }
+}
+@media screen and (min-width: 1920px) {
+  .card-section {
+    width: 1856px;
+  }
+  .card__name {
+    margin-top: 25px;
+    font-size: 26px;
+    line-height: 1.1;
   }
 }
 .backdrop {
@@ -1196,7 +1328,6 @@ span.flatpickr-day.selected:hover, span.flatpickr-day.selected:focus, .flatpickr
   font-size: 18px;
   font-weight: 500;
   line-height: 24px;
-  letter-spacing: -0.36px;
 }
 
 .modal-info__character-date {
@@ -1242,7 +1373,6 @@ span.flatpickr-day.selected:hover, span.flatpickr-day.selected:focus, .flatpickr
   font-size: 14px;
   font-weight: 500;
   line-height: 18px;
-  letter-spacing: -0.28px;
   margin-bottom: 4px;
 }
 
@@ -1328,7 +1458,6 @@ span.flatpickr-day.selected:hover, span.flatpickr-day.selected:focus, .flatpickr
   font-size: 18px;
   font-weight: 500;
   line-height: 24px;
-  letter-spacing: -0.36px;
 }
 
 .comic-info__main-date {
@@ -1370,7 +1499,6 @@ span.flatpickr-day.selected:hover, span.flatpickr-day.selected:focus, .flatpickr
   font-style: normal;
   font-weight: 500;
   line-height: 24px;
-  letter-spacing: -0.36px;
   margin-bottom: 20px;
 }
 

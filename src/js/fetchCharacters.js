@@ -45,12 +45,8 @@ export async function fetchCreator(resourceURI) {
       });
 }
 
-export async function fetchCharactersByFilter(comics, nameStartsWith, orderBy, modifiedSince) {
+export async function fetchCharactersByFilter( nameStartsWith, orderBy, modifiedSince) {
     const params = []
-
-    if (comics !== '') {
-        params.push(`comics=${comics}&`)
-    }
 
     if (nameStartsWith !== '') {
         params.push(`nameStartsWith=${nameStartsWith}&`)
