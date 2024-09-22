@@ -1,11 +1,11 @@
 .random-title {
-    margin: 40px 20px 35px;
-    color: #FAFAFA;
-    font-size: 26px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 32px;
-    text-transform: uppercase;
+  margin: 40px 20px 35px;
+  color: #fafafa;
+  font-size: 26px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 32px;
+  text-transform: uppercase;
 }
 
 .gallery-container {
@@ -17,147 +17,136 @@
   display: flex;
   align-items: center;
   column-gap: 40px;
-  animation: scrollAnimation 15s infinite alternate; 
+  animation: scrollAnimation 15s infinite alternate;
   margin-bottom: 30px;
 }
 
 .gallery__item {
-    scroll-snap-align: center;
-    padding-bottom: 20px;
+  scroll-snap-align: center;
+  padding-bottom: 20px;
 }
 
 .gallery__image {
-    width: 100%;
-    max-width: 400px;
-    object-fit: cover;
+  width: 100%;
+  max-width: 400px;
+  object-fit: cover;
 }
 
 @keyframes scrollAnimation {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(-230%);
-    }
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-230%);
+  }
 }
 
 .random-button {
-    border-radius: 1000px;
-    transition: all cubic-bezier(0.075, 0.82, 0.165, 1) 500ms; 
-    background-color: #34387F;
+  display: inline-block;
+  border-radius: 1000px;
+  transition: all cubic-bezier(0.075, 0.82, 0.165, 1) 500ms;
+  background-color: #34387f;
 }
-
 
 @media screen and (max-width: 480px) {
+  .gallery__item {
+    min-width: 75%;
+  }
 
-    .gallery__item {
-        min-width: 75%;
-    }
-
-    .random-button {
-        margin-left: 20px;
-    }
+  .random-button {
+    margin-left: 20px;
+  }
 }
-
 
 @media screen and (min-width: 768px) {
+  .random-button {
+    margin-left: 0;
+  }
 
-    .random-button {
-        margin-left: 0;
-    }
+  .random-title {
+    font-size: 44px;
+    line-height: 44px;
+  }
 
-    .random-title {
-        font-size: 44px;
-        line-height: 44px;
-    }
-    
-    .random-section {
-        width: 728px;
-        margin-left: auto;
-        margin-right: auto;
-    }
+  .random-section {
+    width: 728px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 
-    .gallery {
-        column-gap: 50px;
-    }
+  .gallery {
+    column-gap: 50px;
+  }
 
-    .gallery__image {
-        width: 300px;
-    }
+  .gallery__image {
+    width: 300px;
+  }
 
-    @keyframes scrollAnimation {
-        0% {
-            transform: translateX(0);
-        }
-        100% {
-            transform: translateX(-46%);
-        }
+  @keyframes scrollAnimation {
+    0% {
+      transform: translateX(0);
     }
+    100% {
+      transform: translateX(-46%);
+    }
+  }
 }
-
 
 @media screen and (min-width: 1200px) {
-    
-    .random-section {
-        width: 90%;
-        max-width: 1600px;
-        margin: 0 auto;
-    }
+  .random-section {
+    width: 90%;
+    max-width: 1600px;
+    margin: 0 auto;
+  }
 
-    .gallery {
-        width: 100%;
-        column-gap: 70px;
-    }
+  .gallery {
+    width: 100%;
+    column-gap: 70px;
+  }
 
-    .gallery__image {
-        width: 400px;
-    }
+  .gallery__image {
+    width: 400px;
+  }
 
-    .random-title {
-        margin-top: 70px;
-    }
+  .random-title {
+    margin-top: 70px;
+  }
 
-    
-    @keyframes scrollAnimation {
-        0% {
-            transform: translateX(0%);
-        }
-        100% {
-            transform: translateX(-55%);
-        }
+  @keyframes scrollAnimation {
+    0% {
+      transform: translateX(0%);
     }
+    100% {
+      transform: translateX(-55%);
+    }
+  }
 }
-
 
 @media screen and (min-width: 1300px) {
+  .gallery {
+    width: 100%;
+    column-gap: 30px;
+    animation: none;
+  }
 
-    .gallery {
-        width: 100%;
-        column-gap: 30px;
-        animation: none;
-    }
-
-    .gallery__image {
-        width: auto;
-        margin: 0;
-        width: calc(100% - 90px / 4);
-
-    }
+  .gallery__image {
+    width: auto;
+    margin: 0;
+    width: calc(100% - 90px / 4);
+  }
 }
 
-
 @media screen and (min-width: 1920px) {
+  .gallery {
+    column-gap: 50px;
+    animation: none;
+  }
 
-    .gallery {
-        column-gap: 50px;
-        animation: none;
-    }
+  .gallery__image {
+    width: 360px;
+  }
 
-    .gallery__image {
-        width: 360px;
-    }
-
-    .random-title {
-        margin-top: 70px;
-    }
+  .random-title {
+    margin-top: 70px;
+  }
 }

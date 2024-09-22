@@ -1,76 +1,54 @@
 import { fetchCharactersByFilter } from './fetchCharacters';
 import { addEventListenersForModal } from './modal-window';
 
-const dropdownToggle = document.querySelector('.dropdown-toggle');
-const dropdownList = document.querySelector('.dropdown-list');
-const dropdownText = document.querySelector('.dropdown-text');
-const dropdownItems = document.querySelectorAll('.dropdown-item');
-
-const dateInput = document.querySelector('[name="date"]');
 const nameStartsWithInput = document.querySelector('[name="nameStartsWith"]');
-const searchButtons = document.querySelectorAll('.search-form__button');
+const searchButton = document.querySelector('.search-form__button');
 
-dropdownToggle.addEventListener('click', function (event) {
+searchButton.addEventListener('click', function (event) {
+  event.preventDefault();
+  getCharactersByFilter();
+});
+
+nameStartsWithInput.addEventListener('keypress', function (event) {
+  if (event.key === 'Enter') {
     event.preventDefault();
-    dropdownList.classList.toggle('show');
-    dropdownItems.forEach(item => {
-         if (item.textContent == dropdownText.textContent) {
-            item.classList.add('active')
-        }       
-    })
-});
-
-document.addEventListener('click', function (event) {    
-    const targetElement = event.target;
-
-    if (!dropdownToggle.contains(targetElement) && !dropdownList.contains(targetElement)) {
-        dropdownList.classList.remove('show');
-    }
-});
-
-dropdownList.addEventListener('click', function (event) {
-    if (event.target !== dropdownList && dropdownText.textContent !== event.target.textContent) {
-        dropdownText.textContent = event.target.textContent;
-        dropdownList.classList.remove('show');
-        dropdownItems.forEach(item => {
-            item.classList.remove('active');
-        })
-        getCharactersByFilter();
-    }
-});
-
-dateInput.addEventListener('change', function(event) {
     getCharactersByFilter();
+  }
 });
-
-searchButtons.forEach(button => {
-    button.addEventListener('click', function (event) {
-        event.preventDefault();
-        getCharactersByFilter();
-    });
-})
 
 async function getCharactersByFilter() {
-    const nameStartsWith = nameStartsWithInput.value;
-    const orderBy = dropdownText.textContent.toLowerCase();
-    const modifiedSince = orderBy == 'name' ? '' : dateInput.value;
-    const res = await fetchCharactersByFilter(nameStartsWith, orderBy, modifiedSince);
+  const loader = document.getElementById('loader');
+  const cardList = document.querySelector('.cards');
+
+  loader.style.display = 'block';
+  cardList.style.display = 'none';
+
+  try {
+    const res = await fetchCharactersByFilter(nameStartsWithInput.value);
     createCardsMarkup(res);
+  } catch (error) {
+    console.error('Error fetching characters:', error);
+  } finally {
+    loader.style.display = 'none';
+    cardList.style.display = 'flex';
+  }
 }
 
 function createCardsMarkup(characters) {
-    const cardList = document.querySelector('.cards');
-    let markup = '';
+  const cardList = document.querySelector('.cards');
+  let markup = '';
 
-    if (characters.length > 0) {
-        markup = characters
-        .map((char) => `<li class="card" data-id="${char.id}" data-modal-open>
+  if (characters.length > 0) {
+    markup = characters
+      .map(
+        char => `<li class="card" data-id="${char.id}" data-modal-open>
                 <img class="card__img" src="${char.thumbnail.path}/portrait_uncanny.${char.thumbnail.extension}" alt="${char.name}">
                 <p class="card__name">${char.name}</p>
-            </li>`)
-        .join("");
-    } else {
-        markup = `<div class="card-notification">
+            </li>`
+      )
+      .join('');
+  } else {
+    markup = `<div class="card-notification">
             <p class="card-notification__text">Try looking for something else..</p>
             <svg class="card-notification__svg" xmlns="http://www.w3.org/2000/svg" width="259" height="146" viewBox="0 0 259 146" fill="none">
                 <path
@@ -78,11 +56,8 @@ function createCardsMarkup(characters) {
                     stroke="#34387F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
         </div>`;
-    }
-    
-    cardList.innerHTML = markup;
-    addEventListenersForModal();
-    
-    
-}
+  }
 
+  cardList.innerHTML = markup;
+  addEventListenersForModal();
+}

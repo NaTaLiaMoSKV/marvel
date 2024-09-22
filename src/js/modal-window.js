@@ -1,5 +1,11 @@
-import { fetchCharacterById, fetchComics, fetchComicById, fetchComicCharacters, fetchCreator } from "./fetchCharacters";
-import placeholderImage from '../images/placeholder3.jpg'
+import {
+  fetchCharacterById,
+  fetchComics,
+  fetchComicById,
+  fetchComicCharacters,
+  fetchCreator,
+} from './fetchCharacters';
+import placeholderImage from '../images/placeholder3.jpg';
 
 const body = document.querySelector('body');
 const modal = document.querySelector('[data-modal]');
@@ -7,56 +13,68 @@ const modalCard = document.querySelector('.modal-card');
 const modalClose = document.querySelector('[data-modal-close]');
 
 export function addEventListenersForModal() {
-    addCharactersButtonsEventListener();
+  addCharactersButtonsEventListener();
 
-    window.addEventListener('keydown', onKeyDown);
-    document.addEventListener('click', onBackdropClick);
-    modalClose.addEventListener('click', onModalCloseBtnClick);
+  window.addEventListener('keydown', onKeyDown);
+  document.addEventListener('click', onBackdropClick);
+  modalClose.addEventListener('click', onModalCloseBtnClick);
 }
 
 function onModalCloseBtnClick() {
+  modal.classList.add('is-hidden');
+  body.classList.remove('modal-open');
+  renderPlaceholderMarkup();
+}
+
+function onKeyDown(e) {
+  if (e.keyCode == 27 && !modal.classList.contains('is-hidden')) {
     modal.classList.add('is-hidden');
     body.classList.remove('modal-open');
     renderPlaceholderMarkup();
-} 
-
-function onKeyDown(e) {
-    if (e.keyCode == 27 && !modal.classList.contains('is-hidden')) {
-        modal.classList.add('is-hidden');
-        body.classList.remove('modal-open');
-        renderPlaceholderMarkup();
-        window.removeEventListener('keydown', onKeyDown);
-    }
+    window.removeEventListener('keydown', onKeyDown);
+  }
 }
-    
+
 function onBackdropClick(e) {
-    if (e.target.classList.contains('backdrop')) {
-        modal.classList.add('is-hidden');
-        body.classList.remove('modal-open');
-        renderPlaceholderMarkup();
-        document.removeEventListener('click', onBackdropClick);
-    }
+  if (e.target.classList.contains('backdrop')) {
+    modal.classList.add('is-hidden');
+    body.classList.remove('modal-open');
+    renderPlaceholderMarkup();
+    document.removeEventListener('click', onBackdropClick);
+  }
 }
 
 function renderTime(inputTime) {
-    const date = new Date(inputTime);
+  const date = new Date(inputTime);
 
-    const months = [
-        "January", "February", "March", "April", "May", "June",
-        "July", "August", "September", "October", "November", "December"
-    ];
+  const months = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
+  ];
 
-    const day = date.getDate();
-    const month = months[date.getMonth()];
-    const year = date.getFullYear();
+  const day = date.getDate();
+  const month = months[date.getMonth()];
+  const year = date.getFullYear();
 
-    const formattedTime = `${month} ${day}, ${year}`;
+  const formattedTime = `${month} ${day}, ${year}`;
 
-    return formattedTime;
+  return formattedTime;
 }
 
 function renderPlaceholderMarkup() {
-    const placeholderMarkup = `<div class="modal-images">
+  const placeholderMarkup = `
+            <div class="modal-images">
+            <div id="modal-loader"></div>
                 <img class="modal-images__main-img" src=${placeholderImage} alt="main image">
                 </div>
                 <div class="modal-info">
@@ -91,97 +109,114 @@ function renderPlaceholderMarkup() {
                         </ul>
                     </div>
                 </div>`;
-    modalCard.innerHTML = placeholderMarkup;
-    
+  modalCard.innerHTML = placeholderMarkup;
 }
 
 function addCharactersButtonsEventListener() {
-    const modalOpenButtons = document.querySelectorAll('.card');
+  const modalOpenButtons = document.querySelectorAll('.card');
 
-    modalOpenButtons.forEach(item => {
-        item.addEventListener('click', async (e) => {
-            modal.classList.remove('is-hidden');
-            body.classList.add('modal-open');
+  modalOpenButtons.forEach(item => {
+    item.addEventListener('click', async e => {
+      modal.classList.remove('is-hidden');
+      body.classList.add('modal-open');
 
-            const characterId = e.currentTarget.dataset.id;
-            const character = await fetchCharacterById(characterId);
-            
-            await renderCharacterModalCard(character);
-            
-            window.addEventListener('keydown', onKeyDown);
-            document.addEventListener('click', onBackdropClick);
-            modalClose.addEventListener('click', onModalCloseBtnClick);
-            
-        });
+      const characterId = e.currentTarget.dataset.id;
+      const character = await fetchCharacterById(characterId);
+
+      await renderCharacterModalCard(character);
+
+      window.addEventListener('keydown', onKeyDown);
+      document.addEventListener('click', onBackdropClick);
+      modalClose.addEventListener('click', onModalCloseBtnClick);
     });
+  });
 }
 
 function addComicsButtonsEventListener() {
-    const modalComicsOpenButtons = document.querySelectorAll('.modal-info__comics-item');
+  const modalComicsOpenButtons = document.querySelectorAll(
+    '.modal-info__comics-item'
+  );
 
-    modalComicsOpenButtons.forEach(item => {
-        item.addEventListener('click', async (e) => {
-            const comicId = e.currentTarget.dataset.id;
-            const comic = await fetchComicById(comicId);
-            await renderComicModalMarkup(comic);
-            
-            window.addEventListener('keydown', onKeyDown);
-            document.addEventListener('click', onBackdropClick);
-            modalClose.addEventListener('click', onModalCloseBtnClick);
-        });
+  modalComicsOpenButtons.forEach(item => {
+    item.addEventListener('click', async e => {
+      const comicId = e.currentTarget.dataset.id;
+      const comic = await fetchComicById(comicId);
+      await renderComicModalMarkup(comic);
+
+      window.addEventListener('keydown', onKeyDown);
+      document.addEventListener('click', onBackdropClick);
+      modalClose.addEventListener('click', onModalCloseBtnClick);
     });
+  });
 }
 
 async function renderCharacterModalCard(char) {
-    let comicsListMarkup = '';
-    const comics = await fetchComics(char.id);
+  let comicsListMarkup = '';
+  let comics;
+  const html = document.querySelector('html');
+  console.log(html);
+  html.style.cursor = 'wait';
 
-    if (comics.length !== 0) {
-        let comicsMarkup = '';
+  try {
+    comics = await fetchComics(char.id);
+  } catch (error) {
+    console.error('Error fetching character:', error);
+  } finally {
+    html.style.cursor = 'auto';
+  }
+  //   const comics = await fetchComics(char.id);
 
-        for (let i = 0; i < 3; i++) {
-            const com = comics[i];
+  if (comics.length !== 0) {
+    let comicsMarkup = '';
 
-            if (window.innerWidth > 768) {
-                if (com.title.length > 17) {
-                    com.title = com.title.substring(0, 16) + ' ...';
-                }
-            }
-            
-            if (!com.creators.items[0]) {
-                com.creators.items[0] = { name: 'Without author' };
-            }
-            comicsMarkup += `
+    for (let i = 0; i < 3; i++) {
+      const com = comics[i];
+
+      if (window.innerWidth > 768) {
+        if (com.title.length > 17) {
+          com.title = com.title.substring(0, 16) + ' ...';
+        }
+      }
+
+      if (!com.creators.items[0]) {
+        com.creators.items[0] = { name: 'Without author' };
+      }
+      comicsMarkup += `
                 <li class="modal-info__comics-item" data-id="${com.id}" data-modal-comics>
                     <img class="modal-info__comics-img" data-id=${com.id} src="${com.thumbnail.path}/portrait_fantastic.${com.thumbnail.extension}" alt="comics">
                     <h3 class="modal-info__comics-title">${com.title}</h3>
                     <p class="modal-info__comics-author">${com.creators.items[0].name}</p>
                 </li>
             `;
-        }
+    }
 
-        comicsListMarkup = `
+    comicsListMarkup = `
             <h2 class="modal-info__comics-name">List of comics</h2>
             <ul class="modal-info__comics-list">
                 ${comicsMarkup}
             </ul>
-        `
-    }
-    else comicsListMarkup = '<h2 class="modal-info__comics-name">No comics with the character</h2>';
+        `;
+  } else
+    comicsListMarkup =
+      '<h2 class="modal-info__comics-name">No comics with the character</h2>';
 
-    if (char.description.trim() == '' || !char.description) {
-        char.description = `${char.name} is one of the characters in the marvel universe. To read the comics of this character, click on the cover of the comic.`
-    }
+  if (char.description.trim() == '' || !char.description) {
+    char.description = `${char.name} is one of the characters in the marvel universe. To read the comics of this character, click on the cover of the comic.`;
+  }
 
-    const markup = `
+  const markup = `
         <div class="modal-images">
-            <img class="modal-images__main-img" src="${char.thumbnail.path}/portrait_uncanny.${char.thumbnail.extension}" alt="${char.name}">
+            <img class="modal-images__main-img" src="${
+              char.thumbnail.path
+            }/portrait_uncanny.${char.thumbnail.extension}" alt="${char.name}">
         </div>
         <div class="modal-info">
             <div class="modal-info__character">
                 <div class="modal-info__character-info">
                     <h2 class="modal-info__character-name">${char.name}</h2>
-                    <p class="modal-info__character-date">${renderTime(char.modified)}</p>
+                    <p class="modal-info__character-date">${renderTime(
+                      char.modified
+                    )}</p>
                 </div>
                 <p class="modal-info__character-description">
                     ${char.description}
@@ -191,47 +226,49 @@ async function renderCharacterModalCard(char) {
                 ${comicsListMarkup}
             </div>
         </div> `;
-    
-    modalCard.innerHTML = markup;
-    addComicsButtonsEventListener();
+
+  modalCard.innerHTML = markup;
+  addComicsButtonsEventListener();
 }
 
 async function renderComicModalMarkup(comic) {
-    let charactersListMarkup = '';
-    let creatorName = '';
-    let comicDate = 'unknown';
-    let creatorMarkup = '';
-    const characters = await fetchComicCharacters(comic.id);
+  let charactersListMarkup = '';
+  let creatorName = '';
+  let comicDate = 'unknown';
+  let creatorMarkup = '';
+  const characters = await fetchComicCharacters(comic.id);
 
-    if (characters.length !== 0) {
-        let charactersMarkup = '';
-        let count = characters.length < 10 ? characters.length : 9;
+  if (characters.length !== 0) {
+    let charactersMarkup = '';
+    let count = characters.length < 10 ? characters.length : 9;
 
-        for (let i = 0; i < count; i++) {
-            const char = characters[i];
+    for (let i = 0; i < count; i++) {
+      const char = characters[i];
 
-            if (char.name.length > 20) {
-                char.name = char.name.substring(0, 20) + ' ...';
-            }
+      if (char.name.length > 20) {
+        char.name = char.name.substring(0, 20) + ' ...';
+      }
 
-            charactersMarkup += `
+      charactersMarkup += `
                <li class="comic__character card" data-id=${char.id}>
                     <img class="comic__character-img" src="${char.thumbnail.path}/standard_fantastic.${char.thumbnail.extension}" alt="comic character">
                     <p class="comic__character-name">${char.name}</p>
                 </li>
             `;
-        }
-        charactersListMarkup = `
+    }
+    charactersListMarkup = `
             <h3 class="comic-info__title">Characters</h3>
                 <ul class="comic__characters">
                     ${charactersMarkup}
                 </ul>
-        `
-    } else charactersListMarkup = '<h3 class="comic-info__title">No characters in the comic</h3>';
-    
-    if (comic.creators.items[0]) {
-        const creator = await fetchCreator(comic.creators.items[0].resourceURI);
-        creatorMarkup = `
+        `;
+  } else
+    charactersListMarkup =
+      '<h3 class="comic-info__title">No characters in the comic</h3>';
+
+  if (comic.creators.items[0]) {
+    const creator = await fetchCreator(comic.creators.items[0].resourceURI);
+    creatorMarkup = `
             <h3 class="comic-info__title">Creator</h3>
             <div class="creator">
                 <img class="creator__img" src="${creator.thumbnail.path}/standard_fantastic.${creator.thumbnail.extension}" alt="creator">
@@ -240,29 +277,36 @@ async function renderComicModalMarkup(comic) {
                     <p class="creator__name">${creator.fullName}</p>
                 </div>
             </div>`;
-        creatorName = `${creator.fullName} |`;
-    }
+    creatorName = `${creator.fullName} |`;
+  }
 
-    if ((comic.description !== null && comic.description.trim() == '') || !comic.description) {
-        comic.description = `${comic.title} is one of the comics in the marvel universe.`
-    }
+  if (
+    (comic.description !== null && comic.description.trim() == '') ||
+    !comic.description
+  ) {
+    comic.description = `${comic.title} is one of the comics in the marvel universe.`;
+  }
 
-    if (comic.dates[0].date) {
-        comicDate = comic.dates[0].date.substring(0, 4);
-    }
+  if (comic.dates[0].date) {
+    comicDate = comic.dates[0].date.substring(0, 4);
+  }
 
-    const com = comic.prices.find(price => price.type === 'printPrice');
-    const price = (com.price * 10).toFixed(2);
+  const com = comic.prices.find(price => price.type === 'printPrice');
+  const price = (com.price * 10).toFixed(2);
 
-    const markup = `
+  const markup = `
         <div class="modal-images">
-            <img class="modal-images__comic-img" src="${comic.thumbnail.path}/portrait_uncanny.${comic.thumbnail.extension}" alt="main image">
+            <img class="modal-images__comic-img" src="${
+              comic.thumbnail.path
+            }/portrait_uncanny.${comic.thumbnail.extension}" alt="main image">
         </div>
         <div class="comic-info">
             <div>
                 <div class="comic-info__main">
                     <h2 class="comic-info__main-title">${comic.title}</h2>
-                    <p class="comic-info__main-date">${creatorName} ${renderTime(comic.modified)}</p>
+                    <p class="comic-info__main-date">${creatorName} ${renderTime(
+    comic.modified
+  )}</p>
                 </div>
                 <p class="comic-info__main-description">
                     ${comic.description}
@@ -297,6 +341,6 @@ async function renderComicModalMarkup(comic) {
             
         </div>
     `;
-    modalCard.innerHTML = markup;
-    addCharactersButtonsEventListener();
+  modalCard.innerHTML = markup;
+  addCharactersButtonsEventListener();
 }
