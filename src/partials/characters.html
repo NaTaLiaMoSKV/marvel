@@ -50,20 +50,22 @@
     </header>
     <section class="search-section">
       <form class="search-form">
-        <div class="search-form__text-filter">
-          <label class="search-form__label">Name Starts With </label>
-          <input
-            autocomplete="off"
-            class="search-form__input"
-            type="text"
-            name="nameStartsWith"
-            placeholder="Enter text"
-          />
-          <button class="search-form__button">
-            <svg class="search-form__icon" width="18" height="18">
-              <use href="../images/symbol-defs.svg#icon-search"></use>
-            </svg>
-          </button>
+        <div class="search-input" data-title="Example: Spider-Man">
+          <div class="search-form__text-filter">
+            <label class="search-form__label">Name Starts With </label>
+            <input
+              autocomplete="off"
+              class="search-form__input"
+              type="text"
+              name="nameStartsWith"
+              placeholder="Enter text"
+            />
+            <button class="search-form__button">
+              <svg class="search-form__icon" width="18" height="18">
+                <use href="../images/symbol-defs.svg#icon-search"></use>
+              </svg>
+            </button>
+          </div>
         </div>
       </form>
     </section>
@@ -151,57 +153,7 @@
           </svg>
         </button>
         <div class="modal-card">
-          <div class="modal-images">
-            <img
-              class="modal-images__main-img"
-              src="../images/placeholder3.jpg"
-              alt="main image"
-            />
-          </div>
-          <div class="modal-info">
-            <div class="modal-info__character">
-              <div class="modal-info__character-info">
-                <h2 class="modal-info__character-name">Character name</h2>
-                <p class="modal-info__character-date">last modified date</p>
-              </div>
-              <p class="modal-info__character-description">
-                Character description
-              </p>
-            </div>
-            <div class="modal-info__comics">
-              <h2 class="modal-info__comics-name">List of comics</h2>
-
-              <ul class="modal-info__comics-list">
-                <li class="modal-info__comics-item" data-id="47176">
-                  <img
-                    class="modal-info__comics-img"
-                    src="../images/placeholder3.jpg"
-                    alt="comics"
-                  />
-                  <h3 class="modal-info__comics-title"></h3>
-                  <p class="modal-info__comics-author"></p>
-                </li>
-                <li class="modal-info__comics-item">
-                  <img
-                    class="modal-info__comics-img"
-                    src="../images/placeholder3.jpg"
-                    alt="comics"
-                  />
-                  <h3 class="modal-info__comics-title"></h3>
-                  <p class="modal-info__comics-author"></p>
-                </li>
-                <li class="modal-info__comics-item">
-                  <img
-                    class="modal-info__comics-img"
-                    src="../images/placeholder3.jpg"
-                    alt="comics"
-                  />
-                  <h3 class="modal-info__comics-title"></h3>
-                  <p class="modal-info__comics-author"></p>
-                </li>
-              </ul>
-            </div>
-          </div>
+          <div id="modal-loader"></div>
         </div>
       </div>
     </div>

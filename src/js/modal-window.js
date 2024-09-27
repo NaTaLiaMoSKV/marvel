@@ -5,7 +5,6 @@ import {
   fetchComicCharacters,
   fetchCreator,
 } from './fetchCharacters';
-import placeholderImage from '../images/placeholder3.jpg';
 
 const body = document.querySelector('body');
 const modal = document.querySelector('[data-modal]');
@@ -73,42 +72,7 @@ function renderTime(inputTime) {
 
 function renderPlaceholderMarkup() {
   const placeholderMarkup = `
-            <div class="modal-images">
-            <div id="modal-loader"></div>
-                <img class="modal-images__main-img" src=${placeholderImage} alt="main image">
-                </div>
-                <div class="modal-info">
-                    <div class="modal-info__character">
-                        <div class="modal-info__character-info">
-                            <h2 class="modal-info__character-name">Character name</h2>
-                            <p class="modal-info__character-date">last modified date</p>
-                        </div>
-                        <p class="modal-info__character-description">
-                            Character description
-                        </p>
-                    </div>
-                    <div class="modal-info__comics">
-                        <h2 class="modal-info__comics-name">List of comics</h2>
-                        
-                        <ul class="modal-info__comics-list">
-                            <li class="modal-info__comics-item" data-modal-comics>
-                                <img class="modal-info__comics-img" src=${placeholderImage} alt="comics">
-                                <h3 class="modal-info__comics-title"></h3>
-                                <p class="modal-info__comics-author"></p>
-                            </li>
-                            <li class="modal-info__comics-item" data-modal-comics>
-                                <img class="modal-info__comics-img" src=${placeholderImage} alt="comics">
-                                <h3 class="modal-info__comics-title"></h3>
-                                <p class="modal-info__comics-author"></p>
-                            </li>
-                            <li class="modal-info__comics-item" data-modal-comics>
-                                <img class="modal-info__comics-img" src=${placeholderImage} alt="comics">
-                                <h3 class="modal-info__comics-title"></h3>
-                                <p class="modal-info__comics-author"></p>
-                            </li>
-                        </ul>
-                    </div>
-                </div>`;
+        <div id="modal-loader"></div>`;
   modalCard.innerHTML = placeholderMarkup;
 }
 
@@ -151,20 +115,15 @@ function addComicsButtonsEventListener() {
 }
 
 async function renderCharacterModalCard(char) {
+  renderPlaceholderMarkup();
   let comicsListMarkup = '';
   let comics;
-  const html = document.querySelector('html');
-  console.log(html);
-  html.style.cursor = 'wait';
 
   try {
     comics = await fetchComics(char.id);
   } catch (error) {
     console.error('Error fetching character:', error);
-  } finally {
-    html.style.cursor = 'auto';
   }
-  //   const comics = await fetchComics(char.id);
 
   if (comics.length !== 0) {
     let comicsMarkup = '';
@@ -232,6 +191,7 @@ async function renderCharacterModalCard(char) {
 }
 
 async function renderComicModalMarkup(comic) {
+  renderPlaceholderMarkup();
   let charactersListMarkup = '';
   let creatorName = '';
   let comicDate = 'unknown';
@@ -250,11 +210,11 @@ async function renderComicModalMarkup(comic) {
       }
 
       charactersMarkup += `
-               <li class="comic__character card" data-id=${char.id}>
-                    <img class="comic__character-img" src="${char.thumbnail.path}/standard_fantastic.${char.thumbnail.extension}" alt="comic character">
-                    <p class="comic__character-name">${char.name}</p>
-                </li>
-            `;
+          <li class="comic__character card" data-id=${char.id}>
+              <img class="comic__character-img" src="${char.thumbnail.path}/standard_fantastic.${char.thumbnail.extension}" alt="comic character">
+              <p class="comic__character-name">${char.name}</p>
+          </li>
+      `;
     }
     charactersListMarkup = `
             <h3 class="comic-info__title">Characters</h3>
